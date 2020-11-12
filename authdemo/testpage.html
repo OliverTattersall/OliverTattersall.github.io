@@ -3,11 +3,44 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <!--Import Google Icon Font-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
 </head>
 <body>
-    <input id="uname" type="text">
-    <button type="button" onclick="console.log(document.getElementById('uname').value)"></button>
+
+    <div id = "landing" class = "container">
+		<h2>Login</h2>
+		<a href = "#modal-login" class = "btn orange modal-trigger">LOGIN</a>
+	</div>
+
+	<div id = "modal-login" class = "modal">
+  		<div class = "modal-content">
+	    	<h4>Login</h4><br />
+	    	<form id = "login-form">
+	      		<div class = "input-field">
+	        		<input type = "email" id = "login-email" autocomplete="" required/>
+	        		<label for= "login-email">Email Address</label>
+	      		</div>
+	      		<div class = "input-field">
+	        		<input type = "password" id="login-password" autocomplete="" required />
+	        		<label for = "login-password">Choose password</label>
+	      		</div>
+	      
+	      		<button class = "btn yellow darken-2 z-depth-0">Login</button>
+	    	</form>
+  		</div>
+  	</div>
     
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.min.js"></script>
     <script src="authdemo.js"></script>
+    <script>
+        $(document).ready(()=>{
+            $('.modal').modal()
+        })
+    </script>
 </body>
 </html>
