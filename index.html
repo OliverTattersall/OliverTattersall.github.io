@@ -29,6 +29,11 @@
         .section{
             padding-top: 4vw;
             padding-bottom: 4vw;
+        }.tabs .indicator{
+            background-color: #1a237e;
+        }
+            .tabs .tab a:focus, .tabs .tab a:focus.active{
+            background: transparent;
         }
     </style>
 </head>
@@ -89,12 +94,60 @@
     </section>
 
     <!-- parallax -->
+    <div class="parallax-container">
+        <div class="parallax">
+            <img src="ninjaimg/street.jpg" alt="" class='responsive-img'>
+        </div>
+    </div>
 
     <!-- services / tabs -->
 
+    <section class="container section" id="services">
+        <div class="row">
+            <div class="col s12 l4">
+                <h2 class="indigo-text text-darken-4">What I do...</h2>
+                <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Harum commodi nemo excepturi placeat accusantium quae aspernatur esse. Quidem repellat, ipsum natus soluta iure et eos quaerat quod, amet doloremque est.</p>
+                <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Voluptatem voluptas nobis ipsa nemo dolore necessitatibus ab officiis unde facere, asperiores, sint laborum recusandae corporis itaque nihil consectetur quaerat culpa sapiente!</p>
+                
+            </div>
+            <div class="col s12 l6 offset-l2">
+                <ul class="tabs">
+                    <li class="tab col s6">
+                        <a href="#photography" class="indigo-text text-darken-4">Photography</a>
+                    </li>
+                    <li class="tab col s6">
+                        <a href="#editing" class="indigo-text text-darken-4">Editing</a>
+                    </li>
+                </ul>
+                <div class="col s12" id='photography'>
+                    <p class="flow-text indigo-text text-darken-4">PHOTOGRAPHY</p>
+                    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Corporis at voluptatem debitis. Odio, inventore provident? Cum soluta facere beatae architecto temporibus, aperiam velit minus odio aut nisi reprehenderit animi blanditiis.</p>
+                    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Corporis at voluptatem debitis. Odio, inventore provident? Cum soluta facere beatae architecto temporibus, aperiam velit minus odio aut nisi reprehenderit animi blanditiis.</p>
+                </div>
+                <div class="col s12" id='editing'>
+                    <p class="flow-text indigo-text text-darken-4">EDITING</p>
+                    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Corporis at voluptatem debitis. Odio, inventore provident? Cum soluta facere beatae architecto temporibus, aperiam velit minus odio aut nisi reprehenderit animi blanditiis.</p>
+                    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Corporis at voluptatem debitis. Odio, inventore provident? Cum soluta facere beatae architecto temporibus, aperiam velit minus odio aut nisi reprehenderit animi blanditiis.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- parallax -->
+    <div class="parallax-container">
+        <div class="parallax">
+            <img src="ninjaimg/stars.jpg" alt="" class='responsive-img'>
+        </div>
+    </div>
 
     <!-- contact form -->
+    <div class="container">
+        <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Atque neque totam debitis modi saepe aperiam beatae nam recusandae culpa, eius tempora. Ipsum, debitis et possimus hic sapiente consequuntur assumenda fuga.</p>
+        <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Atque neque totam debitis modi saepe aperiam beatae nam recusandae culpa, eius tempora. Ipsum, debitis et possimus hic sapiente consequuntur assumenda fuga.</p>
+        <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Atque neque totam debitis modi saepe aperiam beatae nam recusandae culpa, eius tempora. Ipsum, debitis et possimus hic sapiente consequuntur assumenda fuga.</p>
+        <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Atque neque totam debitis modi saepe aperiam beatae nam recusandae culpa, eius tempora. Ipsum, debitis et possimus hic sapiente consequuntur assumenda fuga.</p>
+
+    </div>
 
     <!-- footer -->
 
@@ -106,6 +159,8 @@
         $(document).ready(function(){
             $('.sidenav').sidenav();
             $('.materialboxed').materialbox(); 
+            $(".parallax").parallax();
+            $(".tabs").tabs();
         })
         
     </script>
