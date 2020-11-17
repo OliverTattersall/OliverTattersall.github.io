@@ -1,0 +1,4 @@
+[
+    {"id":"user1@test.com", "password":"hello"},
+    {"id":"user2@test.com", "password":"goodbye"}
+]
