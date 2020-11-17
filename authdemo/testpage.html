@@ -29,7 +29,8 @@
 	        		<label for = "login-password">Choose password</label>
 	      		</div>
 	      
-	      		<button class = "btn yellow darken-2 z-depth-0">Login</button>
+				  <button class = "btn yellow darken-2 z-depth-0" onclick="login(document.getElementById('login-email').value,document.getElementById('login-password').value )">Login</button>
+				  <button class="btn indigo darken-3 z-depth-0" onclick="register(document.getElementById('login-email').value,document.getElementById('login-password').value )">Register</button>
 	    	</form>
   		</div>
   	</div>
@@ -39,7 +40,14 @@
     <script src="authdemo.js"></script>
     <script>
         $(document).ready(()=>{
-            $('.modal').modal()
+            $('.modal').modal({
+				onCloseEnd: (d)=>{
+					console.log(d)
+				}
+			})
+			$("#login-form").submit((e)=>{
+				e.preventDefault();
+			})
         })
     </script>
 </body>

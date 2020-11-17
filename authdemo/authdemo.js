@@ -1,5 +1,24 @@
-var uNames = ["user1","user2","user3"]
-var pWords = ["pword1","pword2","pword3"]
+var uNames = []
+var pWords = []
+
+var url="https://raw.githubusercontent.com/OliverTattersall/OliverTattersall.github.io/main/authdemo/logindata.json"
+var jsondata;
+//fetch -> returns a promise
+//promise is an object that you can check before you do things
+//then -> only run code when fetch is done
+
+fetch(url)
+    .then( (response) => response.json())
+    .then((data)=>{
+        console.log(data)
+        for(i=0;i<data.length;i++){
+            uNames.push(data[i]['id'])
+            pWords.push(data[i]['password'])
+        }
+        console.log(uNames)
+        jsondata=data
+        register("user3@test.com", "banana")
+    })
 
 function login(user, pword){
     let val=false
@@ -10,5 +29,17 @@ function login(user, pword){
             }
         }
     };
+    console.log(val)
     return val
 }
+
+function register(user, pword){
+    console.log(jsondata)
+    jsondata.push({
+        "id":user,
+        "password":pword
+    })
+    console.log(jsondata)
+    $('.modal').modal('close');
+}
+
