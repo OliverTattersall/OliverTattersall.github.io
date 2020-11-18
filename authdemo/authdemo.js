@@ -17,7 +17,6 @@ fetch(url)
         }
         console.log(uNames)
         jsondata=data
-        register("user3@test.com", "banana")
     })
 
 function login(user, pword){
@@ -41,5 +40,7 @@ function register(user, pword){
     })
     console.log(jsondata)
     $('.modal').modal('close');
+    $("#login-email").val("");
+    $("#login-password").val("");
 }
 
