@@ -29,7 +29,12 @@ function login(user, pword){
         }
     };
     console.log(val)
-    return val
+    $('.modal').modal('close');
+    $("#login-email").val("");
+    $("#login-password").val("");
+    document.getElementById("landing").style.display="none";
+    document.getElementById("home").style.display="";
+    // return val
 }
 
 function register(user, pword){
