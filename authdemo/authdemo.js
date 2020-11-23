@@ -32,8 +32,8 @@ function login(user, pword){
     $('.modal').modal('close');
     $("#login-email").val("");
     $("#login-password").val("");
-    document.getElementById("landing").style.display="none";
-    document.getElementById("home").style.display="";
+
+    changepage(user)
     // return val
 }
 
@@ -47,5 +47,13 @@ function register(user, pword){
     $('.modal').modal('close');
     $("#login-email").val("");
     $("#login-password").val("");
+    changepage(user)
 }
 
+
+function changepage(user){
+    document.getElementById("landing").style.display="none";
+    document.getElementById("home").style.display="";
+
+    document.getElementById("welcome").innerHTML="Welcome "+user
+}
