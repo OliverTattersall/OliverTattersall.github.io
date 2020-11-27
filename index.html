@@ -6,10 +6,10 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
 
      <!--Import Google Icon Font-->
-     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+     <link defer href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
     <!-- Compiled and minified CSS -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link defer rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
 
     <!-- Compiled and minified JavaScript -->
 
@@ -35,7 +35,9 @@
             .tabs .tab a:focus, .tabs .tab a:focus.active{
             background: transparent;
         } .dropdown-content{
-            background: transparent;
+            background: none;
+        } .dropdown-content:hover{
+            background-color: transparent;
         }
     </style>
 </head>
@@ -51,29 +53,37 @@
                     <i class="material-icons">menu</i>
                 </a>
                 <ul class="right hide-on-med-and-down">
-                    <li><a onclick="console.log('hello')" class="dropdown-trigger" href="#!" data-target="dropdown1">About Me<i class="material-icons right">arrow_drop_down</i></a></li>
-                    <li><a href="#photos">Photos</a></li>
-                    <li><a href="#services">Services</a></li>
-                    <li><a href="#contact">Contact</a></li>
+                    <li><a onclick="console.log('hello');testpage('index.html')" class="dropdown-trigger" href="#!" data-target="aboutme">About Me<i class="material-icons right">arrow_drop_down</i></a></li>
+                    <li><a id="projecttrigger" onclick="console.log('hello');testpage('projects.html')" class="dropdown-trigger" href="#!" data-target="projects">Projects<i class="material-icons right">arrow_drop_down</i></a></li>
 
-                    <ul id="dropdown1" class="dropdown-content">
-                        <li style="padding-top: 10px;"  onclick="console.log('hello')"><a href="#"></a></li>
-                        <li><a href="#!">one</a></li>
+
+                    <ul id="aboutme" class="dropdown-content">
+                        <li style="padding-top: 10px;"  onclick=""><a class="dropdowns" href="#"></a></li>
+                        <li><a href="#photos">Photos</a></li>
+                        <li><a href="#services">Services</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                    <ul id="projects" class="dropdown-content">
+                        <li style="padding-top: 10px;" onclick=""><a class="dropdowns" href="#"></a></li>
+                        <li><a class="dropdowns" href="#!">one</a></li>
                         <li><a href="#!">two</a></li>
                         <li class="divider"></li>
                         <li><a href="#!">three</a></li>
-                      </ul>
+                    </ul>
+
                     <li><a href="#" class="tooltipped btn-floating btn-small indigo darken-4" data-tooltip="@oliver.tattersal">
                         <i class="fab fa-instagram"></i>
                     </a></li>
-                    <li><a href="#" class="tooltipped btn-floating btn-small indigo darken-4" data-tooltip="Facebook">
-                        <i class="fab fa-facebook"></i>
+                    <li><a href="#" class="tooltipped btn-floating btn-small indigo darken-4" data-tooltip="oliver.tattersall@ucc.on.ca">
+                        <i class="material-icons">email</i>
                     </a></li>
-                    <li><a href="#" class="tooltipped btn-floating btn-small indigo darken-4" data-tooltip="Twitter">
-                        <i class="fab fa-twitter"></i>
+                    <li><a href="#" class="tooltipped btn-floating btn-small indigo darken-4" data-tooltip="Tablesalt#6697">
+                        <i class="fab fa-discord"></i>
                     </a></li>
                 </ul>
                 <ul class="sidenav grey lighten-2" id="mobile-menu">
+                    <!-- <li><a onclick="console.log('hello')" class="dropdown-trigger" href="" data-target="aboutme">About Me<i class="material-icons right">arrow_drop_down</i></a></li>
+                    <li><a onclick="console.log('hello')" class="dropdown-trigger" href="" data-target="projects">Projects<i class="material-icons right">arrow_drop_down</i></a></li> -->
                     <li><a href="#photos">Photos</a></li>
                     <li><a href="#services">Services</a></li>
                     <li><a href="#contact">Contact</a></li>
@@ -94,7 +104,7 @@
                 <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quidem est nisi cum voluptas. Ratione et ullam delectus? Eos odit minima iste ullam vitae, architecto mollitia. Nobis et aut iste itaque.</p>
             </div>
         </div>
-        <div class="row">
+        <!-- <div class="row">
             <div class="col s12 l4 push-l7 offset-l1">
                 <img src="ninjaimg/city.jpg" alt="Image not loading" class="responsive-img materialboxed">
             </div>
@@ -111,7 +121,7 @@
                 <h2 class="indigo-text text-darken-4">Nature</h2>
                 <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quidem est nisi cum voluptas. Ratione et ullam delectus? Eos odit minima iste ullam vitae, architecto mollitia. Nobis et aut iste itaque.</p>
             </div>
-        </div>
+        </div> -->
     </section>
 
     <!-- parallax -->
@@ -254,6 +264,23 @@
             $(".scrollspy").scrollSpy();
             $(".dropdown-trigger").dropdown();
         })
+
+
+        function testpage(id){
+            let link=window.location.href;
+            let parts=link.split("/")
+            let lastlink=parts[parts.length-1]
+            console.log(lastlink)
+            // let target=$(id).attr("href")
+            console.log(id)
+            if(lastlink[lastlink.length-1]=="#"){
+                lastlink=lastlink.slice(0,lastlink.length-1)
+            }
+            if(lastlink!=id){
+                window.location.replace(id)
+            }
+
+        }
         
     </script>
 </body>
