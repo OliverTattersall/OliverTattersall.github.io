@@ -50,22 +50,22 @@
                     <i class="material-icons">menu</i>
                 </a>
                 <ul class="right hide-on-med-and-down">
-                    <li><a onclick="console.log('hello')" class="dropdown-trigger" href="#!" data-target="aboutme">About Me<i class="material-icons right">arrow_drop_down</i></a></li>
+                    <li><a onclick="console.log('hello');testpage('index.html')" class="dropdown-trigger" href="#!" data-target="aboutme">About Me<i class="material-icons right">arrow_drop_down</i></a></li>
                     <li><a id onclick="console.log('hello');testpage('projects.html')" class="dropdown-trigger" href="#!" data-target="projects">Projects<i class="material-icons right">arrow_drop_down</i></a></li>
 
 
                 <ul id="aboutme" class="dropdown-content">
                     <li style="padding-top: 10px;" ><a class="dropdowns" href="#"></a></li>
-                    <li><a href="#photos">Photos</a></li>
+                    <li><a href="#photos">Education</a></li>
                     <li><a href="#services">Services</a></li>
                     <li><a href="#contact">Contact</a></li>
                 </ul>
                 <ul id="projects" class="dropdown-content">
-                    <li style="padding-top: 10px;"><a class="dropdowns" href="#"></a></li>
+                    <!-- <li style="padding-top: 10px;"><a class="dropdowns" href="#"></a></li>
                     <li><a class="dropdowns" href="#!">one</a></li>
                     <li><a href="#!">two</a></li>
                     <li class="divider"></li>
-                    <li><a href="#!">three</a></li>
+                    <li><a href="#!">three</a></li> -->
                 </ul>
 
                     <li><a href="#" class="tooltipped btn-floating btn-small indigo darken-4" data-tooltip="@oliver.tattersal">
@@ -89,6 +89,33 @@
         </nav>
     </header>
 
+    <section class="container section" id="projects">
+        <div class="row">
+            <div class="container">
+                <div class="card">
+                    <div class="container">
+                        <h1>Learning How to create JavaScript Games.</h1>
+                        <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Reprehenderit iusto eius cum molestias quidem vero aut iure, ea voluptas, sequi cumque laborum dolorem non pariatur. Aliquam maiores repudiandae consequatur et?</p>
+                        <a href="#projects" onclick="window.open('https://olivertattersall.github.io/Games/')">Link to project</a>
+                    </div>
+                    <br>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="container">
+                <div class="card">
+                    <div class="container">
+                        <h1>Historical North Toronto Website. </h1>
+                        <p>A website contain a brief history of North Toronto, history on some historical locations in North Toronto, and comparative photos of now and then to see how much it has changed in the last couple centuries. It also has pages where the users can upload there own history about north toronto as well as stories using Firebase to store the data. </p>
+                        
+                        <a href="#projects" onclick="window.open('https://olivertattersall.github.io/NorthTorontoHIstory/')">Link to project</a>
+                    </div>
+                    <br>
+                </div>
+            </div>
+        </div>
+    </section>
 
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.min.js"></script>
