@@ -89,8 +89,8 @@
         </nav>
     </header>
 
-    <section class="container section" id="projects">
-        <div class="row">
+    <section class="container section" id="cards">
+        <!-- <div class="row">
             <div class="container">
                 <div class="card">
                     <div class="container">
@@ -114,7 +114,7 @@
                     <br>
                 </div>
             </div>
-        </div>
+        </div> -->
     </section>
 
     <script src="https://www.gstatic.com/firebasejs/8.1.1/firebase-app.js"></script>
@@ -162,12 +162,47 @@
             measurementId: "G-TVWMXFCDH3"
         };
 
-        var loc = database.ref('ProjectsContent');
+        firebase.initializeApp(firebaseConfig);
+        firebase.analytics();
+        var database=firebase.database();
 
-        loc.on("value", (snapshot)=>{
-            console.log(snapshot)
-            console.log(snapshot.val())
-        })
+        var loc = database.ref('ProjectsContent/');
+
+        loc.on('value', (snapshot)=>{
+            let data = snapshot.val();
+            console.log(data)
+            console.log("hello")
+
+            let keys  = Object.keys(data);
+            let final=""
+            for(i=0;i<keys.length;i++){
+                let datastr = "";
+                let front=`
+                <div class="row">
+                    <div class="container">
+                        <div class="card">
+                            <div class="container">`;
+                let end = `
+                                </div>
+                            <br>
+                        </div>
+                    </div>
+                </div>`;
+
+                let title = "<h1>"+data[keys[i]]["Title"]+"</h1>";
+                let content = "<p>"+data[keys[i]]["Content"]+"</p>";
+                let link = `<a href="#projects" onclick="window.open('`+data[keys[i]]["Link"]+`')">Link to project</a>`;
+
+                let middle = title+content+link;
+
+                datastr = front + middle + end;
+                final = final + datastr;
+            }
+
+            $("#cards").html(final);
+
+        });
+        console.log("hello")
     </script>
 </body>
 </html>
