@@ -89,7 +89,10 @@
         </nav>
     </header>
 
-    <section class="container section" id="cards">
+    <section class="container section" >
+        <div class="row" id = "cards">
+
+        </div>
         <!-- <div class="row">
             <div class="container">
                 <div class="card">
@@ -152,21 +155,20 @@
         }
 
         var firebaseConfig = {
-            apiKey: "AIzaSyDsusjHosGuMJHckQM_dh_3g55-NmClN0s",
-            authDomain: "dpcs-firebasedemo.firebaseapp.com",
-            databaseURL: "https://dpcs-firebasedemo.firebaseio.com",
-            projectId: "dpcs-firebasedemo",
-            storageBucket: "dpcs-firebasedemo.appspot.com",
-            messagingSenderId: "348003880438",
-            appId: "1:348003880438:web:b58a21f3aed94452638bd7",
-            measurementId: "G-TVWMXFCDH3"
+            apiKey: "AIzaSyAmWzUEXfY0HF5Yk6z6fk0-tWl3VchJ1LU",
+            authDomain: "resumewebsite-858b2.firebaseapp.com",
+            projectId: "resumewebsite-858b2",
+            storageBucket: "resumewebsite-858b2.appspot.com",
+            messagingSenderId: "653615050899",
+            appId: "1:653615050899:web:7ec6e2fb21429478765d66",
+            measurementId: "G-ELZ94E3LYT"
         };
 
         firebase.initializeApp(firebaseConfig);
         firebase.analytics();
         var database=firebase.database();
 
-        var loc = database.ref('ProjectsContent/');
+        var loc = database.ref('Projects/');
 
         loc.on('value', (snapshot)=>{
             let data = snapshot.val();
@@ -176,26 +178,23 @@
             let keys  = Object.keys(data);
             let final="";
             for(i=0;i<keys.length;i++){
-                let datastr = "";
-                let front=`
-                <div class="row">
-                    <div class="container">
-                        <div class="card">
-                            <div class="container">`;
-                let end = `
-                                </div>
-                            <br>
+                let datastr = `
+                
+                <div class="col s12 m12 l8">
+                    <div class="card">
+                        <div class="container">
+                            <h1>${data[keys[i]].title}</h1>
+                            <p>${data[keys[i]].content}</p>
+                            
+                            <a href="#projects" onclick="window.open('${data[keys[i]].link}')">Link to project</a>
                         </div>
+                        <br>
                     </div>
-                </div>`;
+                </div>
+                `;
 
-                let title = "<h1>"+data[keys[i]]["Title"]+"</h1>";
-                let content = "<p>"+data[keys[i]]["Content"]+"</p>";
-                let link = `<a href="#projects" onclick="window.open('`+data[keys[i]]["Link"]+`')">Link to project</a>`;
 
-                let middle = title+content+link;
-
-                datastr = front + middle + end;
+                // datastr = front + middle + end;
                 final = final + datastr;
             }
 
