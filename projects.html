@@ -50,8 +50,8 @@
                     <i class="material-icons">menu</i>
                 </a>
                 <ul class="right hide-on-med-and-down">
-                    <li><a onclick="console.log('hello');testpage('index.html')" class="dropdown-trigger" href="#!" data-target="aboutme">About Me<i class="material-icons right">arrow_drop_down</i></a></li>
-                    <li><a id onclick="console.log('hello');testpage('projects.html')" class="dropdown-trigger" href="#!" data-target="projects">Projects<i class="material-icons right">arrow_drop_down</i></a></li>
+                    <li><a onclick="" class="dropdown-trigger" href="index.html" data-target="aboutme">About Me<i class="material-icons right">arrow_drop_down</i></a></li>
+                    <li><a id onclick="" class="dropdown-trigger" href="#!" data-target="projects">Projects<i class="material-icons right">arrow_drop_down</i></a></li>
 
 
                 <ul id="aboutme" class="dropdown-content">
@@ -61,11 +61,8 @@
                     <li><a href="#contact">Contact</a></li>
                 </ul>
                 <ul id="projects" class="dropdown-content">
-                    <!-- <li style="padding-top: 10px;"><a class="dropdowns" href="#"></a></li>
-                    <li><a class="dropdowns" href="#!">one</a></li>
-                    <li><a href="#!">two</a></li>
-                    <li class="divider"></li>
-                    <li><a href="#!">three</a></li> -->
+                    <li style="padding-top: 10px;"><a class="dropdowns" href="#"></a></li>
+
                 </ul>
 
                     <li><a href="#" class="tooltipped btn-floating btn-small indigo darken-4" data-tooltip="@oliver.tattersal">
@@ -104,19 +101,6 @@
                     <br>
                 </div>
             </div>
-        </div>
-        <div class="row">
-            <div class="container">
-                <div class="card">
-                    <div class="container">
-                        <h1>Historical North Toronto Website. </h1>
-                        <p>A website contain a brief history of North Toronto, history on some historical locations in North Toronto, and comparative photos of now and then to see how much it has changed in the last couple centuries. It also has pages where the users can upload there own history about north toronto as well as stories using Firebase to store the data. </p>
-                        
-                        <a href="#projects" onclick="window.open('https://olivertattersall.github.io/NorthTorontoHIstory/')">Link to project</a>
-                    </div>
-                    <br>
-                </div>
-            </div>
         </div> -->
     </section>
 
@@ -135,24 +119,8 @@
             $('.sidenav').sidenav();
             $(".dropdown-trigger").dropdown();
             $(".tooltipped").tooltip();
+            $(".scrollspy").scrollSpy();
         })
-
-        function testpage(id){
-            let link=window.location.href;
-            let parts=link.split("/")
-            let lastlink=parts[parts.length-1]
-            console.log(lastlink)
-            // let target=$(id).attr("href")
-            console.log(id)
-            if(lastlink[lastlink.length-1]=="#"){
-                lastlink=lastlink.slice(0,lastlink.length-1)
-            }
-            console.log(lastlink)
-            if(lastlink!=id){
-                window.location.replace(id)
-            }
-
-        }
 
         var firebaseConfig = {
             apiKey: "AIzaSyAmWzUEXfY0HF5Yk6z6fk0-tWl3VchJ1LU",
@@ -177,11 +145,12 @@
 
             let keys  = Object.keys(data);
             let final="";
+            let links = "<br>";
             for(i=0;i<keys.length;i++){
                 let datastr = `
                 
                 <div class="col s12 m12 l8">
-                    <div class="card">
+                    <div class="card" id="${data[keys[i]].short}">
                         <div class="container">
                             <h1>${data[keys[i]].title}</h1>
                             <p>${data[keys[i]].content}</p>
@@ -192,16 +161,29 @@
                     </div>
                 </div>
                 `;
-
+                let link = `<li><a class="dropdowns" href="#${data[keys[i]].short}">${data[keys[i]].short}</a></li>`;
 
                 // datastr = front + middle + end;
                 final = final + datastr;
+                links+=link;
+
             }
 
             $("#cards").html(final);
+            $("#projects").html(links);
 
         });
         console.log("hello")
+
+
+
+
+        // commented stuff
+        // console.log('hello');testpage('projects.html')
+        // console.log('hello');testpage('index.html')
+        // 
+        // 
+        // 
     </script>
 </body>
 </html>
