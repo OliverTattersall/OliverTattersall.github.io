@@ -50,8 +50,8 @@
                     <i class="material-icons">menu</i>
                 </a>
                 <ul class="right hide-on-med-and-down">
-                    <li><a onclick="" class="dropdown-trigger" href="index.html" data-target="aboutme">About Me<i class="material-icons right">arrow_drop_down</i></a></li>
-                    <li><a id onclick="" class="dropdown-trigger" href="#!" data-target="projects">Projects<i class="material-icons right">arrow_drop_down</i></a></li>
+                    <li><a href="index.html" class="dropdown-trigger"  data-target="aboutme">About Me<i class="material-icons right">arrow_drop_down</i></a></li>
+                    <li><a onclick="" class="dropdown-trigger" href="#!" data-target="projects">Projects<i class="material-icons right">arrow_drop_down</i></a></li>
 
 
                 <ul id="aboutme" class="dropdown-content">
@@ -61,7 +61,8 @@
                     <li><a href="#contact">Contact</a></li>
                 </ul>
                 <ul id="projects" class="dropdown-content">
-                    <li style="padding-top: 10px;"><a class="dropdowns" href="#"></a></li>
+                    <!-- <li style="padding-top: 10px;"><a class="dropdowns" href="#"></a></li> -->
+                    <br>
                     <li><a href="#go"></a></li>
 
                 </ul>
@@ -92,7 +93,7 @@
 
         </div>
         <div class="row">
-            <div class="container">
+            <div class="container" id = "go">
                 <div class="card" >
                     <div class="container">
                         <h1>Learning How to create JavaScript Games.</h1>
@@ -148,9 +149,9 @@
             console.log(data)
             console.log("hello")
 
-            let keys  = Object.keys(data);
+            var keys  = Object.keys(data);
             let final="";
-            // let links = `<br><li><a href="#go">Go</a></li>`;
+            let links = `<br>`;
             for(i=0;i<keys.length;i++){
                 let datastr = `
                 
@@ -167,11 +168,11 @@
                 </div>
                 `;
 
-                // let link = `<li><a href="#${data[keys[i]].short}">${data[keys[i]].short}</a></li>`;
+                let link = `<li><a href="#${data[keys[i]].short}">${data[keys[i]].short}</a></li>`;
 
                 // datastr = front + middle + end;
                 final = final + datastr;
-                // links+=link;
+                links+=link;
                 
             }
             console.log(links)
