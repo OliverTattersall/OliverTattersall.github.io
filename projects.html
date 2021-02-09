@@ -62,6 +62,7 @@
                 </ul>
                 <ul id="projects" class="dropdown-content">
                     <li style="padding-top: 10px;"><a class="dropdowns" href="#"></a></li>
+                    <li><a href="#go"></a></li>
 
                 </ul>
 
@@ -90,9 +91,9 @@
         <div class="row" id = "cards">
 
         </div>
-        <!-- <div class="row">
+        <div class="row">
             <div class="container">
-                <div class="card">
+                <div class="card" >
                     <div class="container">
                         <h1>Learning How to create JavaScript Games.</h1>
                         <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Reprehenderit iusto eius cum molestias quidem vero aut iure, ea voluptas, sequi cumque laborum dolorem non pariatur. Aliquam maiores repudiandae consequatur et?</p>
@@ -101,8 +102,12 @@
                     <br>
                 </div>
             </div>
-        </div> -->
+        </div>
     </section>
+
+    <div style="height:2000px;"></div>
+    <a id = "go"></a>
+    <div style="height:2000px"></div>
 
     <script src="https://www.gstatic.com/firebasejs/8.1.1/firebase-app.js"></script>
 
@@ -145,11 +150,11 @@
 
             let keys  = Object.keys(data);
             let final="";
-            let links = "<br>";
+            // let links = `<br><li><a href="#go">Go</a></li>`;
             for(i=0;i<keys.length;i++){
                 let datastr = `
                 
-                <div class="col s12 m12 l8">
+                <div class="col s12 m12 l6">
                     <div class="card" id="${data[keys[i]].short}">
                         <div class="container">
                             <h1>${data[keys[i]].title}</h1>
@@ -161,16 +166,18 @@
                     </div>
                 </div>
                 `;
-                let link = `<li><a class="dropdowns" href="#${data[keys[i]].short}">${data[keys[i]].short}</a></li>`;
+
+                // let link = `<li><a href="#${data[keys[i]].short}">${data[keys[i]].short}</a></li>`;
 
                 // datastr = front + middle + end;
                 final = final + datastr;
-                links+=link;
-
+                // links+=link;
+                
             }
-
+            console.log(links)
             $("#cards").html(final);
-            $("#projects").html(links);
+            // $("#projects").html(links);
+            
 
         });
         console.log("hello")
