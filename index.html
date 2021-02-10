@@ -181,45 +181,45 @@
             
             </div>
             <div class="col s12 l5 offset-l2">
-                <form action="">
+                <form action="" id="getintouch">
                     <div class="input-field">
                         <i class="material-icons prefix">email</i>
-                        <input type="email" id="email">
+                        <input type="email" id="email" class = "response">
                         <label for="email">Your email</label>
                     </div>
                     <div class="input-field">
                         <i class="material-icons prefix">message</i>
-                        <textarea id="message" cols="30" rows="10" class="materialize-textarea"></textarea>
+                        <textarea id="message" cols="30" rows="10" class="materialize-textarea response"></textarea>
                         <label for="message">Your Message</label>
                     </div>
                     <div class="input-field">
-                        <input type="text" id="date" class="datepicker">
+                        <input type="text" id="date" class="datepicker response">
                         <label for="date">Choose a meeting day</label>
                     </div>
                     <div class="input-field">
                         <p>Meeting Subject </p>
                         <p>
                             <label>
-                                <input type="checkbox">
+                                <input type="checkbox" id="python" class="response">
                                 <span>Python services</span>
                             </label>
                         </p>
                         <p>
                             <label>
-                                <input type="checkbox">
+                                <input type="checkbox" id="webcheck" class="response">
                                 <span>Front End Web services</span>
                             </label>
                         </p>
                         <p>
                             <label>
-                                <input type="checkbox" name="" id="">
+                                <input type="checkbox" id="reaching" class="response">
                                 <span>Reaching out</span>
                             </label>
                         </p>
                         
                     </div>
                     <div class="input-field center">
-                        <button class="btn">Submit</button>
+                        <button class="btn" id="submit">Submit</button>
                     </div>
                 </form>
             </div>
@@ -232,7 +232,7 @@
             <div class="row">
                 <div class="col s12 l6">
                     <h5>About Me</h5>
-                    <p>My name is Oliver Tattersall, I am 17 years old. I speak English and a little bit of Spanish and French. I have been coding for 3 years and I am an executive in the UCC Coding and Algorithm Club, a club to help people learn and improve programming.  </p>
+                    <p>My name is Oliver Tattersall, I am 17 years old. I speak English and a little bit of Spanish and French. I have been coding for 3 years and I am an executive in the UCC Coding and Algorithm Club, a club to help people learn and improve programming. Some of my other interests outside of programming are rugby, swimming, sailing, and reading. </p>
                     
 
                 </div>
@@ -254,6 +254,13 @@
     </footer>
 
 
+    <script src="https://www.gstatic.com/firebasejs/8.1.1/firebase-app.js"></script>
+
+    <!-- TODO: Add SDKs for Firebase products that you want to use
+        https://firebase.google.com/docs/web/setup#available-libraries -->
+    <script src="https://www.gstatic.com/firebasejs/8.1.1/firebase-analytics.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.1.1/firebase-database.js"></script>
+
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.min.js"></script>
 
@@ -269,29 +276,98 @@
             $(".tooltipped").tooltip();
             $(".scrollspy").scrollSpy();
             $(".dropdown-trigger").dropdown();
+            $("#getintouch").submit(function(e) {
+                e.preventDefault();
+            })
+        })
+
+        var firebaseConfig = {
+            apiKey: "AIzaSyAmWzUEXfY0HF5Yk6z6fk0-tWl3VchJ1LU",
+            authDomain: "resumewebsite-858b2.firebaseapp.com",
+            projectId: "resumewebsite-858b2",
+            storageBucket: "resumewebsite-858b2.appspot.com",
+            messagingSenderId: "653615050899",
+            appId: "1:653615050899:web:7ec6e2fb21429478765d66",
+            measurementId: "G-ELZ94E3LYT"
+        };
+
+        firebase.initializeApp(firebaseConfig);
+        firebase.analytics();
+        var database=firebase.database();
+
+
+        document.getElementById("submit").addEventListener("click", ()=>{
+            var classes = document.getElementsByClassName("response")
+            var date = document.getElementById("date").value;
+            console.log(classes)
+            // data= new Map()
+            data ={}
+            for(i=0; i<classes.length; i++){
+                if(i<3){
+                    console.log(classes[i].value)
+                    console.log(classes[i].id)
+
+                    data[classes[i].id]=classes[i].value
+                }else{
+                    console.log(classes[i].checked)
+
+                    // data.set(classes[i].id,classes[i].checked)
+                    data[classes[i].id] = classes[i].checked
+                }
+                
+            }
+            console.log(data)
+            // console.log(data2)
+            
+
+            let found=false;
+            for(i=0;i<dates.length;i++){
+                if(dates[i]==date){
+                    found=true
+                    break
+                }
+            }
+            if(found==false){
+                database.ref("/Dates/").push(date);
+                database.ref("/Appointments/").push(data);
+                dates.push(date)
+            }else{
+                alert("I am sorry but I am booked up that day. If it is very urgent feel free to email me at : oliver.tattersall@ucc.on.ca")
+            }
+
+
+            
         })
 
 
-        function testpage(id){
-            let link=window.location.href;
-            let parts=link.split("/")
-            let lastlink=parts[parts.length-1]
-            console.log(lastlink)
-            // let target=$(id).attr("href")
-            console.log(id)
-            if(lastlink[lastlink.length-1]=="#"){
-                lastlink=lastlink.slice(0,lastlink.length-1)
+        var dates = []
+        database.ref("Dates/").on("value", (snapshot)=>{
+            data = snapshot.val()
+            keys = Object.keys(data)
+            for(i=0; i<keys.length;i++){
+                dates.push(data[keys[i]])
             }
-            if(lastlink!=id){
-                window.location.replace(id)
-            }
+        })
 
-        }
         
         // commented
         // 
         // console.log('hello');testpage('index.html')
-        // 
+        // function testpage(id){
+        //     let link=window.location.href;
+        //     let parts=link.split("/")
+        //     let lastlink=parts[parts.length-1]
+        //     console.log(lastlink)
+        //     // let target=$(id).attr("href")
+        //     console.log(id)
+        //     if(lastlink[lastlink.length-1]=="#"){
+        //         lastlink=lastlink.slice(0,lastlink.length-1)
+        //     }
+        //     if(lastlink!=id){
+        //         window.location.replace(id)
+        //     }
+
+        // }
         // 
         // 
     </script>

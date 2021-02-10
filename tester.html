@@ -1,0 +1,49 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <link defer rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+
+    <style>
+
+    </style>
+
+</head>
+<body>
+    
+    <div class="carousel">
+        <a class="carousel-item" href="#"><img src="images/UCC.jpg"></a>
+        <a class="carousel-item" href="#"><img src=""></a>
+        <a class="carousel-item" href="#"><img src=""></a>
+        <a class="carousel-item" href="#"><img src=""></a>
+        <a class="carousel-item" href="#"><img src=""></a>
+      </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.min.js"></script>
+
+    <script>
+        var x = setInterval(console.log("hello"), 50)
+        function nextslide(){
+            $(".carousel").carousel("next", 1)
+        }
+
+        function slides(){
+            
+            
+            
+        }
+
+        $(document).ready(function(){
+            $('.carousel').carousel();
+            // nextslide()
+            slides()
+
+        });
+
+
+    </script>
+</body>
+</html>
