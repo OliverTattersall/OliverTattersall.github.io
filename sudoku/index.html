@@ -1,24 +1,63 @@
 <html>
     <header>
+
+            
+
         <style>
             canvas{
-                width:450px;
-                height:450px;
-                margin-left: 25%;
-                align-self: center;
-                background-color: antiquewhite;
+                /* width:450px;
+                height:450px; */
+                /* margin-left: 0; */
+                /* align-self: center; */
+                /* background-color: antiquewhite; */
+            } 
+
+            body{
+                background-color: #aeb0b8;
+            }
+            .buffer{
+                width: 450px;
             }
 
         </style>
     </header>
     <body>
-        <canvas id="sudoku board">
 
-        </canvas>
+        <table>
+            <tr>
+                <td></td>
+                <td>
+                    <p>Play some sudoku</p>
+                </td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>
+                    <p>Choose a difficulty and start a game</p>
+                    <button onclick="">Easy</button>
+                    <button onclick="">Medium</button>
+                    <button onclick="">Hard</button>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <div class="buffer"></div>
+                </td>
+                <td>
+                    <canvas id="sudoku board"></canvas>
+
+                </td>
+            </tr>
+
+            
+
+            
+        </table>
+
 
     </body>
     <script src="index.js"></script>
-    <script src="tester.js"></script>
+
     <script>
 
 
