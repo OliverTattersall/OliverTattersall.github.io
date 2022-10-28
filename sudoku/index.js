@@ -74,11 +74,11 @@ function drawlines(){
 function editBoard(sudokuGrid){
     // drawboard()
     ctx.fillStyle = '#000000'
-    ctx.font = "15px Arial";
+    ctx.font = "13px Arial";
     for(i=0;i<9;i++){
         for(j=1; j<10;j++){
             if(sudokuGrid[i][j-1]!=0){
-                ctx.fillText(sudokuGrid[i][j-1], i*relativeWidth/9+10, j*relativeHeight/9-2)
+                ctx.fillText(sudokuGrid[i][j-1], i*relativeWidth/9+10, j*relativeHeight/9-3)
             }
         }
     }
