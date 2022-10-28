@@ -229,6 +229,13 @@ function checkSolution(){
     alert(x)
 }
 
+function fillSolution(){
+    clearboard(); 
+    drawlines(); 
+    solve(sudokuGrid); 
+    editBoard(sudokuGrid); 
+
+}
 
 
 function getSudoku(diff){
@@ -298,6 +305,15 @@ window.addEventListener('keydown', (e) => {
         }
         // console.log("all good")
     }
+    if(e.keyCode==8){
+        if(currentbox!=null){
+            sudokuGrid[currentbox[0]][currentbox[1]]=0
+            clearboard()
+            drawlines()
+            editBoard(sudokuGrid)
+        }
+    }
+
     // console.log(e.keyCode)
 
  });
