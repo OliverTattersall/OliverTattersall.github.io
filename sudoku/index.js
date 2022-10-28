@@ -183,17 +183,20 @@ function validSolution(sudokuGrid){
         for(j=0;j<9;j++){
             if(sudokuGrid[i][j]!=0){
                 testSetrow.add(sudokuGrid[i][j])
+            }else{
+                return "Seems it isn't filled out"
             }
             if(sudokuGrid[j][i]!=0){
                 testSetcol.add(sudokuGrid[j][i])
+            }else{
+                return "Seems it isn't filled out"
             }
             
-
         }
+
         if(testSetrow.size!=9 || testSetcol.size!=9){
-            return false
+            return "Seems it isn't quite right"
         }
-
 
     }
 
@@ -206,42 +209,60 @@ function validSolution(sudokuGrid){
                 for(l=0;l<3;l++){
                     if(sudokuGrid[y0+k][x0+l]!=0){
                         testBox.add(sudokuGrid[y0+k][x0+l])
+                    }else{
+                        return "Seems it isn't filled out"
                     }
 
                 }
             }
             if(testBox.size!=9){
-                return false
-            }
+                return "Seems it isn't quite right"            }
         }
     }
 
-    return true
-
-
-
+    return "Well done!"
 
 }
 
-function getSudoku(){
+function checkSolution(){
+    x = validSolution(sudokuGrid)
+    alert(x)
+}
+
+
+
+function getSudoku(diff){
+    
+
     const options = {
         method: 'GET',
         headers: {
             'X-RapidAPI-Key': '9ccc3c7238mshf5892d50c1b6370p1a801ejsn94e2e64506e7',
-            'X-RapidAPI-Host': 'sudoku-all-purpose-pro.p.rapidapi.com'
+            'X-RapidAPI-Host': 'sudoku-board.p.rapidapi.com'
         }
     };
     
-    fetch('https://sudoku-all-purpose-pro.p.rapidapi.com/sudoku?create=32&output=raw', options)
+    fetch('https://sudoku-board.p.rapidapi.com/new-board?diff='+diff+'&stype=list&solu=true', options)
+
         .then(response => response.json())
-        .then(response => console.log(response))
+        .then(response => {
+            // console.log(response)
+            let resp = response.response
+            // console.log(resp)
+            clearboard()
+            drawlines()
+            sudokuGrid = resp['unsolved-sudoku']
+            // console.log(sudokuGrid)
+            editBoard(sudokuGrid)
+
+        })
         .catch(err => console.error(err));
 }
 
 
 
 
-// ------------------------------
+// -----------------------------------------------------------------------------------------------
 
 function main(){
     clearboard()

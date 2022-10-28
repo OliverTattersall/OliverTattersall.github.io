@@ -34,9 +34,10 @@
                 <td></td>
                 <td>
                     <p>Choose a difficulty and start a game</p>
-                    <button onclick="">Easy</button>
-                    <button onclick="">Medium</button>
-                    <button onclick="">Hard</button>
+                    <button onclick="getSudoku(1)">Easy</button>
+                    <button onclick="getSudoku(2)">Medium</button>
+                    <button onclick="getSudoku(3)">Hard</button>
+                    <button onclick="getSudoku(4)">Evil</button>
                 </td>
             </tr>
             <tr>
@@ -45,6 +46,16 @@
                 </td>
                 <td>
                     <canvas id="sudoku board"></canvas>
+
+                </td>
+            </tr>
+            <tr>
+                <td>
+
+                </td>
+                <td>
+                    <button onclick="checkSolution()">Check Solution</button>
+                    <button onclick="solve(sudokuGrid); editBoard(sudokuGrid)">Show solution</button>
 
                 </td>
             </tr>
