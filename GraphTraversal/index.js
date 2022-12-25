@@ -65,11 +65,11 @@ function drawlines(){
 
 
     ctx.beginPath()
-    ctx.strokeStyle = "#000000";
+    ctx.strokeStyle = "#00BFFF";
 
 
     ctx.beginPath()
-    ctx.lineWidth = 1;
+    ctx.lineWidth = 0.5;
     // ctx.strokeStyle = "#A0A0A0";
     for(let x=1;x<lengthx;x++){
         ctx.moveTo(x*relativeWidth/lengthx, 0)
@@ -101,8 +101,9 @@ function fillNodes(){
         for(x=0; x<lengthx; x++){
             item = graph[y][x]
             console.log(item.x, item.y)
-            ctx.fillStyle = colors[item.weight.toString()]
-            ctx.fillRect(item.x*relativeWidth/width, item.y*relativeHeight/height, boxlength*relativeWidth/width, boxlength*relativeHeight/height)
+            // ctx.fillStyle = colors[item.weight.toString()]
+            ctx.fillStyle = '#FFFFFF'
+            ctx.fillRect(item.x*relativeWidth/width, item.y*relativeHeight/height, boxlength*relativeWidth/width, (boxlength+2)*relativeHeight/height)
 
         }
 

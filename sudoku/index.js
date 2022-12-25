@@ -239,31 +239,36 @@ function fillSolution(){
 
 
 function getSudoku(diff){
-    
 
-    const options = {
-        method: 'GET',
-        headers: {
-            'X-RapidAPI-Key': '9ccc3c7238mshf5892d50c1b6370p1a801ejsn94e2e64506e7',
-            'X-RapidAPI-Host': 'sudoku-board.p.rapidapi.com'
-        }
-    };
-    
-    fetch('https://sudoku-board.p.rapidapi.com/new-board?diff='+diff+'&stype=list&solu=true', options)
 
-        .then(response => response.json())
-        .then(response => {
-            // console.log(response)
-            let resp = response.response
-            // console.log(resp)
-            clearboard()
-            drawlines()
-            sudokuGrid = resp['unsolved-sudoku']
-            // console.log(sudokuGrid)
-            editBoard(sudokuGrid)
+        const options = {
+            method: 'GET',
+            headers: {
+                'X-RapidAPI-Key': '9ccc3c7238mshf5892d50c1b6370p1a801ejsn94e2e64506e7',
+                'X-RapidAPI-Host': 'mega-sudoku-generator.p.rapidapi.com'
+            }
+        };
+        
+        fetch('https://mega-sudoku-generator.p.rapidapi.com/standard', options)
+            .then(response => response.json())
+            .then(response => {
+                console.log(response)
+                let temp = response['sudoku'+diff].split(";")
+                let final=[]
+                for(i=0;i<9;i++){
+                    let temprow=[]
+                    for(j=0;j<9;j++){
+                        temprow.push(parseInt(temp[i][j]))
+                    }
+                    final.push(temprow)
+                }
+                clearboard()
+                drawlines()
+                sudokuGrid = final
+                editBoard(sudokuGrid)
 
-        })
-        .catch(err => console.error(err));
+            })
+            .catch(err => console.error(err));
 }
 
 
