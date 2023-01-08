@@ -15,10 +15,11 @@
 
     <style>
         header{
-            background-image: url(ninjaimg/man.jpg);
+            /* background-image: url(ninjaimg/man.jpg); */
+            background-color: #1a237e;
             background-size: cover;
             background-position: center;
-            min-height: 1000px;
+            /* min-height: 1000px; */
         }
         @media screen and (max-width: 670px){
             header{
@@ -54,8 +55,10 @@
                 </a>
                 <ul class="right hide-on-med-and-down">
                     <li><a onclick="" class="dropdown-trigger" href="#!" data-target="aboutme">About Me<i class="material-icons right">arrow_drop_down</i></a></li>
-                    <li><a href="projects.html" id="projecttrigger" onclick="console.log('projects.html')" class="dropdown-trigger"  data-target="projects">Projects<i class="material-icons right">arrow_drop_down</i></a></li>
-
+                    <li><a href="projects.html"   >Projects</a></li>
+                    <!-- id="projecttrigger" class="dropdown-trigger"  data-target="projects" onclick="console.log('projects.html')"  
+                    <i class="material-icons right">arrow_drop_down</i>
+                    -->
 
                     <ul id="aboutme" class="dropdown-content">
                         <br>
@@ -64,18 +67,18 @@
                         <li><a href="#languages">Languages</a></li>
                         <li><a href="#contact">Contact</a></li>
                     </ul>
-                    <ul id="projects" class="dropdown-content">
+                    <!-- <ul id="projects" class="dropdown-content">
                         <li style="padding-top: 10px;" onclick=""><a class="dropdowns" href="projects.html"></a></li>
                         <li><a class="dropdowns" href="#!">one</a></li>
                         <li><a href="#!">two</a></li>
                         <li class="divider"></li>
                         <li><a href="#!">three</a></li>
-                    </ul>
+                    </ul> -->
 
                     <li><a href="#" class="tooltipped btn-floating btn-small indigo darken-4" data-tooltip="@oliver.tattersal">
                         <i class="fab fa-instagram"></i>
                     </a></li>
-                    <li><a href="#" class="tooltipped btn-floating btn-small indigo darken-4" data-tooltip="oliver.tattersall@ucc.on.ca">
+                    <li><a href="#" class="tooltipped btn-floating btn-small indigo darken-4" data-tooltip="oliver.m.tattersall@gmail.com">
                         <i class="material-icons">email</i>
                     </a></li>
                     <li><a href="#" class="tooltipped btn-floating btn-small indigo darken-4" data-tooltip="Tablesalt#6697">
@@ -87,7 +90,7 @@
                     <li><a onclick="console.log('hello')" class="dropdown-trigger" href="" data-target="projects">Projects<i class="material-icons right">arrow_drop_down</i></a></li> -->
                     <li><a href="#education">Photos</a></li>
                     <li><a href="#languages">My Languages</a></li>
-                    <li><a href="#contact">Contact</a></li>
+                    
                 </ul>
             </div>
         </nav>
@@ -97,12 +100,21 @@
     <section class="container section scrollspy" id="education">
         <h1 class="center-align">Education</h1>
         <div class="row">
+            <div class="col s12 l7 ">
+                <h2 class="indigo-text text-darken-4">University of Waterloo</h2>
+                <p>I am enrolled in the University of Waterloo for a Degree in Computer Science and a Minor in Physics. I started in the fall of 2022 and will graduate in 2027. My current cumulative average is 95%. I am a member of the Computer Science, Pure Math and Rock climbing clubs at UWaterloo. </p>
+            </div>
+            <div class="col s12 l4  offset-l1">
+                <img src="images/Waterloo.png" alt="Image not loading" class="responsive-img materialboxed">
+            </div>
+        </div>
+        <div class="row">
             <div class="col s12 l4">
                 <img src="images/UCC.jpg" alt="Image not loading" class="responsive-img materialboxed">
             </div>
             <div class="col s12 l7 offset-l1 ">
                 <h2 class="indigo-text text-darken-4">Upper Canada College</h2>
-                <p>I started at Upper Canada College in Grade 6 and have continued throughout middle school and high school. In grade 11, I entered the IB Diploma Program. The courses I chose to take were HL Physics, HL Mathematics, HL Economics, SL spanish, SL English, SL Computer Science. During my time at UCC I have been consistently in the top 10% of my class, and have recieved various awards. </p>
+                <p>I completed my Ontario diploma and IB diploma at Upper Canada College. I started at Upper Canada College in Grade 6 and have continued throughout middle school and high school. The courses I chose to take were HL Physics, HL Mathematics, HL Economics, SL spanish, SL English, SL Computer Science. I completed my extended essay(EE) in the comparison of heapsort and quicksort. I received the Spanish and Computer Science awards. </p>
             </div>
         </div>
         <!-- <div class="row">
@@ -124,13 +136,19 @@
             </div>
         </div> -->
     </section>
-
     <!-- parallax -->
     <div class="parallax-container">
         <div class="parallax">
-            <img src="ninjaimg/street.jpg" alt="" class='responsive-img'>
+            <img src="ninjaimg/stars.jpg" alt="" class='responsive-img'>
         </div>
     </div>
+
+    <!-- parallax -->
+    <!-- <div class="parallax-container">
+        <div class="parallax">
+            <img src="ninjaimg/street.jpg" alt="" class='responsive-img'>
+        </div>
+    </div> -->
 
     <!-- services / tabs -->
 
@@ -138,7 +156,7 @@
         <div class="row">
             <div class="col s12 l4">
                 <h2 class="indigo-text text-darken-4">My Languages</h2>
-                <p>I have done the majority of my coding in python and in front end web development, HTML, CSS and Javascript. Some of the projects I have created are under the Projects Tab. I also have beginner experience in C++ and Java. </p>
+                <p>I have done the majority of my coding in python and in front end web development, HTML, CSS and Javascript. Some of the projects I have created are under the Projects Tab. I also have beginner experience in C++ and Java and classroom experience in Racket and C. </p>
                 
                 
             </div>
@@ -165,14 +183,14 @@
     </section>
 
     <!-- parallax -->
-    <div class="parallax-container">
+    <!-- <div class="parallax-container">
         <div class="parallax">
             <img src="ninjaimg/stars.jpg" alt="" class='responsive-img'>
         </div>
-    </div>
+    </div> -->
 
     <!-- contact form -->
-    <section class="section container scrollspy" id="contact">
+    <!-- <section class="section container scrollspy" id="contact">
         <div class="row">
             <div class="col s12 l5">
                 <h2 class="indigo-text text-darken-4">Get in Touch</h2>
@@ -224,7 +242,7 @@
                 </form>
             </div>
         </div>
-    </section>
+    </section> -->
 
     <!-- footer -->
     <footer class="page-footer grey darken-3">
@@ -232,7 +250,7 @@
             <div class="row">
                 <div class="col s12 l6">
                     <h5>About Me</h5>
-                    <p>My name is Oliver Tattersall, I am 17 years old. I speak English and a little bit of Spanish and French. I have been coding for 3 years and I am an executive in the UCC Coding and Algorithm Club, a club to help people learn and improve programming. Some of my other interests outside of programming are rugby, swimming, sailing, and reading. </p>
+                    <p>My name is Oliver Tattersall, I am 19 years old. I speak English and a little bit of Spanish and French. I have been coding for 4 years. Some of my other interests outside of programming are rugby, swimming, sailing, and reading. </p>
                     
 
                 </div>
