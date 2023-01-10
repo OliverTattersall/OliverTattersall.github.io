@@ -39,7 +39,10 @@
             background: none;
         } .dropdown-content:hover{
             background-color: transparent;
-        }
+        } 
+        .card:hover {
+                box-shadow: 5px 8px 16px 5px rgba(0,0,0,0.2);
+            }
     </style>
 </head>
 <body>
@@ -94,9 +97,19 @@
     </header>
 
     <section class="container section" >
-        <div class="row" id = "cards">
+        <div class="row">
+            <div class="col s12 m12 l6 " id = "cardsleft">
 
+            </div>
+            <div class="col s12 m12 l6 " id="cardsright">
+    
+            </div>
         </div>
+
+        <!-- <div class="row" id = "cards">
+
+        </div> -->
+
         <!-- <div class="row">
             <div class="container" id = "go">
                 <div class="card" >
@@ -131,15 +144,25 @@
             $(".scrollspy").scrollSpy();
         })
 
-        var firebaseConfig = {
-            apiKey: "AIzaSyAmWzUEXfY0HF5Yk6z6fk0-tWl3VchJ1LU",
-            authDomain: "resumewebsite-858b2.firebaseapp.com",
-            projectId: "resumewebsite-858b2",
-            storageBucket: "resumewebsite-858b2.appspot.com",
-            messagingSenderId: "653615050899",
-            appId: "1:653615050899:web:7ec6e2fb21429478765d66",
-            measurementId: "G-ELZ94E3LYT"
-        };
+        const firebaseConfig = {
+              apiKey: "AIzaSyC2NvK7KIz11pbw8gY83wgmPASoO6RzOH4",
+              authDomain: "resumesite-f4147.firebaseapp.com",
+              projectId: "resumesite-f4147",
+              storageBucket: "resumesite-f4147.appspot.com",
+              messagingSenderId: "248157240094",
+              appId: "1:248157240094:web:af48a1574f576141fc670f",
+              measurementId: "G-4XZWWM6N13"
+            };
+
+        // var firebaseConfig = {
+        //     apiKey: "AIzaSyAmWzUEXfY0HF5Yk6z6fk0-tWl3VchJ1LU",
+        //     authDomain: "resumewebsite-858b2.firebaseapp.com",
+        //     projectId: "resumewebsite-858b2",
+        //     storageBucket: "resumewebsite-858b2.appspot.com",
+        //     messagingSenderId: "653615050899",
+        //     appId: "1:653615050899:web:7ec6e2fb21429478765d66",
+        //     measurementId: "G-ELZ94E3LYT"
+        // };
 
         firebase.initializeApp(firebaseConfig);
         firebase.analytics();
@@ -153,12 +176,14 @@
             console.log("hello")
 
             var keys  = Object.keys(data);
-            let final="";
+            let finall="";
+            let finalr="";
             let links = `<br>`;
             for(i=0;i<keys.length;i++){
+                // class="col s12 m12 l6"
                 let datastr = `
                 
-                <div class="col s12 m12 l6">
+                <div >
                     <div class="card" id="${data[keys[i]].short}">
                         <div class="container">
                             <h1>${data[keys[i]].title}</h1>
@@ -174,12 +199,18 @@
                 let link = `<li><a href="#${data[keys[i]].short}">${data[keys[i]].short}</a></li>`;
 
                 // datastr = front + middle + end;
-                final = final + datastr;
+                if(i%2==0){
+                    finall+=datastr
+                }else{
+                    finalr+=datastr
+                }
+                // final = final + datastr;
                 links+=link;
                 
             }
             console.log(links)
-            $("#cards").html(final);
+            $("#cardsleft").html(finall);
+            $('#cardsright').html(finalr);
             $("#projects").html(links);
             
 
