@@ -171,11 +171,25 @@
         var loc = database.ref('Projects/');
 
         loc.on('value', (snapshot)=>{
-            let data = snapshot.val();
-            console.log(data)
-            console.log("hello")
+            let tempdata = snapshot.val();
+            // console.log(data)
+            // console.log("hello")
+            // data.sort(
+            //     (a,b) =>{
 
-            var keys  = Object.keys(data);
+            //     }
+            // )
+            let data=[];
+            var tempkeys  = Object.keys(tempdata);
+            for(i=0;i<tempkeys.length;i++){
+                data.push(tempdata[tempkeys[i]])
+            }
+            data.sort(
+                (a,b) =>{
+                    return a.importance - b.importance
+                }
+            )
+            let keys = Object.keys(data)
             let finall="";
             let finalr="";
             let links = `<br>`;
