@@ -78,7 +78,7 @@ export default class PathfindingVisualizer extends Component {
 
     return (
       <>
-        <h1>Welcome to my React App graph traversal visualizer</h1>
+        <h1>Welcome to my React App, a graph traversal visualizer</h1>
         <h4>Click and drag on the grid to create Walls</h4>
         <button class="button" onClick={() => this.visualizeDijkstra()}>
           Visualize Dijkstra's Algorithm
