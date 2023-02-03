@@ -195,16 +195,28 @@
             let links = `<br>`;
             for(i=0;i<keys.length;i++){
                 // class="col s12 m12 l6"
+                let projlink = `<a href="#projects" onclick="window.open('${data[keys[i]].link}')">Link to project</a>`
+                let gitlink = `<a href="#projects" onclick="window.open('${data[keys[i]].linkg}')">Link to Github</a>`
+
+                if(data[keys[i]].link == null){
+                    projlink = ""
+                }else if(data[keys[i]].linkg==null){
+                    gitlink = ""
+                }else{
+                    projlink+="<br>"
+                }
+
                 let datastr = `
                 
                 <div >
                     <div class="card" id="${data[keys[i]].short}">
                         <div class="container">
                             <h1>${data[keys[i]].title}</h1>
-                            <p>${data[keys[i]].content}</p>
-                            
-                            <a href="#projects" onclick="window.open('${data[keys[i]].link}')">Link to project</a>
-                        </div>
+                            <p>${data[keys[i]].content}</p>`
+                            +
+                            projlink+gitlink
+                            +
+                        `</div>
                         <br>
                     </div>
                 </div>
