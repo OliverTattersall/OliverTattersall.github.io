@@ -28,6 +28,8 @@
                 min-height: 500px;
             }
 
+        }.card_title{
+            padding-top: 15px;
         }
         .section{
             padding-top: 4vw;
@@ -50,6 +52,8 @@
             /* height: 100%; */
         }.card_image:hover{
             box-shadow: 5px 8px 16px 5px rgba(0,0,0,0.2);
+        } .modal{
+            height:100%;
         }
     </style>
 </head>
@@ -104,6 +108,7 @@
         </nav>
     </header>
 
+
     <section class="container section" >
         <div class="row">
             <div class="col s12 m12 l6 " id = "cardsleft">
@@ -118,21 +123,75 @@
 
         </div> -->
 
-        <!-- <div class="row">
-            <div class="container" id = "go">
-                <div class="card" >
-                    <div class="container">
-                        <h1>Learning How to create JavaScript Games.</h1>
-                        <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Reprehenderit iusto eius cum molestias quidem vero aut iure, ea voluptas, sequi cumque laborum dolorem non pariatur. Aliquam maiores repudiandae consequatur et?</p>
-                        <a href="#projects" onclick="window.open('https://olivertattersall.github.io/Games/')">Link to project</a>
-                    </div>
-                    <br>
-                </div>
-            </div>
-        </div> -->
     </section>
+    
+    <div class="modals">
+        <div id="graph_modal" class="modal">
+            <div class="modal-content" style = "padding-bottom: 12px;">
+                <img src="images/graph.jpg" class = "card_image" alt="failed image load">
+                <a href="#projects" class="btn" onclick="window.open('https://oliver-tattersall-github-io-mfos.vercel.app/')">Link to project</a>
+                
+            </div>
+            <div class="modal-footer">
+                <a href="#!" class="modal-close waves-effect waves-green btn-flat">Close</a>
+            </div>
+        </div>
 
+        <div id="sudoku_modal" class="modal">
+            <div class="modal-content" style = "padding-bottom: 12px;">
+                <img src="images/Sudoku.jpg" class = "card_image" alt="failed image load">
+                <a href="#projects" class="btn" onclick="window.open('https://olivertattersall.github.io/sudoku/')">Link to project</a>
+                
+            </div>
+            <div class="modal-footer">
+                <a href="#!" class="modal-close waves-effect waves-green btn-flat">Close</a>
+            </div>
+        </div>
 
+        <div id="games_modal" class="modal">
+            <div class="modal-content" style = "padding-bottom: 12px;">
+                <img src="images/games.jpg" class = "card_image" alt="failed image load">
+                <a href="#projects" class="btn" onclick="window.open('https://olivertattersall.github.io/Games/')">Link to project</a>
+                
+            </div>
+            <div class="modal-footer">
+                <a href="#!" class="modal-close waves-effect waves-green btn-flat">Close</a>
+            </div>
+        </div>
+
+        <div id="northToronto_modal" class="modal">
+            <div class="modal-content" style = "padding-bottom: 12px;">
+                <img src="images/NorthToronto.jpg" class = "card_image" alt="failed image load">
+                <a href="#projects" class="btn" onclick="window.open('https://olivertattersall.github.io/NorthTorontoHIstory/')">Link to project</a>
+                
+            </div>
+            <div class="modal-footer">
+                <a href="#!" class="modal-close waves-effect waves-green btn-flat">Close</a>
+            </div>
+        </div>
+
+        <div id="ticTacToe_modal" class="modal">
+            <div class="modal-content" style = "padding-bottom: 12px;">
+                <img src="images/TicTacToe.jpg" class = "card_image" alt="failed image load">
+                <a href="#projects" class="btn" onclick="window.open('https://expo.dev/@olivertattersall/Tictactoe?serviceType=classic&disttribution=expo-go')">Link to project</a>
+                
+            </div>
+            <div class="modal-footer">
+                <a href="#!" class="modal-close waves-effect waves-green btn-flat">Close</a>
+            </div>
+        </div>
+
+        <div id="contests_modal" class="modal">
+            <div class="modal-content" style = "padding-bottom: 12px;">
+                <img src="images/Contests.jpg" class = "card_image" alt="failed image load">
+                <a href="#projects" class="btn" onclick="window.open('https://github.com/OliverTattersall/CodingContests')">Link to project</a>
+                
+            </div>
+            <div class="modal-footer">
+                <a href="#!" class="modal-close waves-effect waves-green btn-flat">Close</a>
+            </div>
+        </div>
+    </div>
 
     <script src="https://www.gstatic.com/firebasejs/8.1.1/firebase-app.js"></script>
 
@@ -150,7 +209,9 @@
             $(".dropdown-trigger").dropdown();
             $(".tooltipped").tooltip();
             $(".scrollspy").scrollSpy();
+            $('.modal').modal();
         })
+
 
         const firebaseConfig = {
               apiKey: "AIzaSyC2NvK7KIz11pbw8gY83wgmPASoO6RzOH4",
@@ -162,15 +223,6 @@
               measurementId: "G-4XZWWM6N13"
             };
 
-        // var firebaseConfig = {
-        //     apiKey: "AIzaSyAmWzUEXfY0HF5Yk6z6fk0-tWl3VchJ1LU",
-        //     authDomain: "resumewebsite-858b2.firebaseapp.com",
-        //     projectId: "resumewebsite-858b2",
-        //     storageBucket: "resumewebsite-858b2.appspot.com",
-        //     messagingSenderId: "653615050899",
-        //     appId: "1:653615050899:web:7ec6e2fb21429478765d66",
-        //     measurementId: "G-ELZ94E3LYT"
-        // };
 
         firebase.initializeApp(firebaseConfig);
         firebase.analytics();
@@ -180,13 +232,7 @@
 
         loc.on('value', (snapshot)=>{
             let tempdata = snapshot.val();
-            // console.log(data)
-            // console.log("hello")
-            // data.sort(
-            //     (a,b) =>{
-
-            //     }
-            // )
+           
             let data=[];
             var tempkeys  = Object.keys(tempdata);
             for(i=0;i<tempkeys.length;i++){
@@ -200,14 +246,18 @@
             let keys = Object.keys(data)
             let finall="";
             let finalr="";
+            let modal_sec = "";
             let links = `<br>`;
+        
+
             for(i=0;i<keys.length;i++){
                 // class="col s12 m12 l6"
-                let projlink = `<a href="#projects" onclick="window.open('${data[keys[i]].link}')">Link to project</a>`
-                let gitlink = `<a href="#projects" onclick="window.open('${data[keys[i]].linkg}')">Link to Github</a>`
-
+                let projlink = `<a href="#projects" class="btn" onclick="window.open('${data[keys[i]].link}')">Link to project</a>`
+                let gitlink = `<a href="#projects" class="btn" onclick="window.open('${data[keys[i]].linkg}')">Link to Github</a>`
+                let modallink = projlink;
                 if(data[keys[i]].link == null){
                     projlink = ""
+                    modallink = gitlink;
                 }else if(data[keys[i]].linkg==null){
                     gitlink = ""
                 }else{
@@ -218,20 +268,37 @@
                 
                 <div >
                     <div class="card" id="${data[keys[i]].short}">
-                        <div class="container">
-                            <h1>${data[keys[i]].title}</h1>
+                        <div class="container cards">
+                            <h1 class="card_title">${data[keys[i]].title}</h1>
                             <p>${data[keys[i]].content}</p>`
                             +
-                            projlink+gitlink
+                            projlink
                             +
                             `<br>
-                            <img src="images/`+data[keys[i]].short+`.jpg" class="card_image" alt="Girl in a jacket">
+                            <img src="images/`+data[keys[i]].short+`.jpg" class="card_image modal-trigger" href="#`+data[keys[i]].short+`_modal" alt="failed image load">
+                            <br>
+                            <br>
+                            `
+                            +gitlink+
+                            `
                         </div>
                         <br>
                     </div>
                 </div>
                 `;
-
+                
+                let modalstr = `
+                <div id="`+data[keys[i]].short+`_modal" class="modal">
+                    <div class="modal-content" style = "padding-bottom: 12px;">
+                        <img src="images/`+data[keys[i]].short+`.jpg" class = "card_image" alt="failed image load">
+                        <a href="" class="btn" onclick="window.open('`+modallink+`')">Link to project</a>
+                        
+                    </div>
+                    <div class="modal-footer">
+                        <a href="#!" class="modal-close waves-effect waves-green btn-flat">Close</a>
+                    </div>
+                </div>
+                `;
                 let link = `<li><a href="#${data[keys[i]].short}">${data[keys[i]].short}</a></li>`;
 
                 // datastr = front + middle + end;
@@ -242,12 +309,15 @@
                 }
                 // final = final + datastr;
                 links+=link;
-                
+                modal_sec+=modalstr;
             }
-            console.log(links)
+
+            // modal_sec+=modalstr;
+            // console.log(modal_sec)
             $("#cardsleft").html(finall);
             $('#cardsright').html(finalr);
             $("#projects").html(links);
+            // $(".modals").html(modal_sec);
             
 
         });
