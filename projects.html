@@ -47,10 +47,13 @@
         .card:hover {
                 box-shadow: 5px 8px 16px 5px rgba(0,0,0,0.2);
         }
-        .card_image {
+        .card_image_horizontal {
             width: 100%;
             /* height: 100%; */
-        }.card_image:hover{
+        }.card_image_vertical{
+            width:47%;
+        }
+        .card_image:hover{
             box-shadow: 5px 8px 16px 5px rgba(0,0,0,0.2);
         } .modal{
             height:100%;
@@ -128,7 +131,7 @@
     <div class="modals">
         <div id="Graph_modal" class="modal">
             <div class="modal-content" style = "padding-bottom: 12px;">
-                <img src="images/graph.jpg" class = "card_image" alt="failed image load">
+                <img src="images/graph.jpg" class = "card_image_horizontal" alt="failed image load">
                 <a href="#projects" class="btn" onclick="window.open('https://oliver-tattersall-github-io-mfos.vercel.app/')">Link to project</a>
                 
             </div>
@@ -139,7 +142,7 @@
 
         <div id="Sudoku_modal" class="modal">
             <div class="modal-content" style = "padding-bottom: 12px;">
-                <img src="images/Sudoku.jpg" class = "card_image" alt="failed image load">
+                <img src="images/Sudoku.jpg" class = "card_image_horizontal" alt="failed image load">
                 <a href="#projects" class="btn" onclick="window.open('https://olivertattersall.github.io/sudoku/')">Link to project</a>
                 
             </div>
@@ -150,7 +153,7 @@
 
         <div id="Games_modal" class="modal">
             <div class="modal-content" style = "padding-bottom: 12px;">
-                <img src="images/games.jpg" class = "card_image" alt="failed image load">
+                <img src="images/games.jpg" class = "card_image_horizontal" alt="failed image load">
                 <a href="#projects" class="btn" onclick="window.open('https://olivertattersall.github.io/Games/')">Link to project</a>
                 
             </div>
@@ -161,7 +164,7 @@
 
         <div id="NorthToronto_modal" class="modal">
             <div class="modal-content" style = "padding-bottom: 12px;">
-                <img src="images/NorthToronto.jpg" class = "card_image" alt="failed image load">
+                <img src="images/NorthToronto.jpg" class = "card_image_horizontal" alt="failed image load">
                 <a href="#projects" class="btn" onclick="window.open('https://olivertattersall.github.io/NorthTorontoHIstory/')">Link to project</a>
                 
             </div>
@@ -172,7 +175,8 @@
 
         <div id="TicTacToe_modal" class="modal">
             <div class="modal-content" style = "padding-bottom: 12px;">
-                <img src="images/TicTacToe.jpg" class = "card_image" alt="failed image load">
+                <img src="images/TicTacToe.jpg" class = "card_image_vertical" alt="failed image load">
+                <br>
                 <a href="#projects" class="btn" onclick="window.open('https://expo.dev/@olivertattersall/Tictactoe?serviceType=classic&disttribution=expo-go')">Link to project</a>
                 
             </div>
@@ -183,7 +187,7 @@
 
         <div id="Contests_modal" class="modal">
             <div class="modal-content" style = "padding-bottom: 12px;">
-                <img src="images/Contests.jpg" class = "card_image" alt="failed image load">
+                <img src="images/Contests.jpg" class = "card_image_horizontal" alt="failed image load">
                 <a href="#projects" class="btn" onclick="window.open('https://github.com/OliverTattersall/CodingContests')">Link to project</a>
                 
             </div>
@@ -275,7 +279,7 @@
                             projlink
                             +
                             `<br>
-                            <img src="images/`+data[keys[i]].short+`.jpg" class="card_image modal-trigger" href="#`+data[keys[i]].short+`_modal" alt="failed image load">
+                            <img src="images/`+data[keys[i]].short+`.jpg" class="modal-trigger card_image card_image_`+data[keys[i]].direction+`" href="#`+data[keys[i]].short+`_modal" alt="failed image load">
                             <br>
                             <br>
                             `
@@ -290,7 +294,7 @@
                 let modalstr = `
                 <div id="`+data[keys[i]].short+`_modal" class="modal">
                     <div class="modal-content" style = "padding-bottom: 12px;">
-                        <img src="images/`+data[keys[i]].short+`.jpg" class = "card_image" alt="failed image load">
+                        <img src="images/`+data[keys[i]].short+`.jpg" class = "card_image`+data[keys[i]].direction+`" alt="failed image load">
                         <a href="" class="btn" onclick="window.open('`+modallink+`')">Link to project</a>
                         
                     </div>
@@ -318,6 +322,9 @@
             $('#cardsright').html(finalr);
             $("#projects").html(links);
             // $(".modals").html(modal_sec);
+            val = $('#TicTacToe');
+            // val[0].children[0].children[5].height = 619
+            // val[0].children[0].children[5].width = 315
             
 
         });
