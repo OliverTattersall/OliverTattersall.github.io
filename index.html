@@ -43,6 +43,8 @@
         } #personalPhoto{
             height: 360px;
             width: 270px;
+        } .top{
+            color: aliceblue;
         }
     </style>
 </head>
@@ -67,8 +69,9 @@
                     <ul id="aboutme" class="dropdown-content">
                         <br>
                         <!-- <li style="padding-top: 10px;" class="dropdowns"><a class="dropdowns" href="#"></a></li> -->
-                        <li><a href="#education">Education</a></li>
                         <li><a href="#languages">Languages</a></li>
+                        <li><a href="#education">Education</a></li>
+                        
                         <!-- <li><a href="#contact">Contact</a></li> -->
                     </ul>
                     <!-- <ul id="projects" class="dropdown-content">
@@ -92,15 +95,92 @@
                 <ul class="sidenav grey lighten-2" id="mobile-menu">
                     <!-- <li><a onclick="console.log('hello')" class="dropdown-trigger" href="" data-target="aboutme">About Me<i class="material-icons right">arrow_drop_down</i></a></li>
                     <li><a onclick="console.log('hello')" class="dropdown-trigger" href="" data-target="projects">Projects<i class="material-icons right">arrow_drop_down</i></a></li> -->
-                    <li><a href="#education">Photos</a></li>
                     <li><a href="#languages">My Languages</a></li>
+                    <li><a href="#education">Education</a></li>
+                    <li><a href="projects.html">Projects</li>
+                    
                     
                 </ul>
             </div>
         </nav>
     </header>
 
+    <footer class="page-footer grey darken-3">
+        <div class="container">
+            <div class="row">
+                <div class="col s12 l6">
+                    <h5 class="top">About Me</h5>
+                    <p class="top">Hi, my name is Oliver Tattersall and I am 19 years old. I speak English and a little bit of Spanish and French. I have been coding for 5 years. Some of my other interests outside of programming are rockclimbing, rugby, co-op video games, swimming, sailing, and reading. </p>
+                    
+                    
+                    <a href="projects.html" class="waves-effect waves-light btn"><i class="material-icons right">arrow_right</i>Link to Projects</a>
+
+                </div>
+                <div class="col s12 l4 offset-l2">
+                    <img src="images/AboutPhoto.jpg" id="personalPhoto" alt="" srcset="">
+                </div>
+                <!-- <div class="col s12 l4 offset-l2">
+                    <h5>Connect</h5>
+                    <ul>
+                        <li><a href="#" class="grey-text text-lighten-3">Instagram</a></li>
+                        <li><a href="#" class="grey-text text-lighten-3">Email</a></li>
+                        <li><a href="#" class="grey-text text-lighten-3">Discord</a></li>
+                        <li><a href="#" class="grey-text text-lighten-3">Linked In</a></li>
+                    </ul>
+                </div> -->
+            </div>
+        </div>
+    </footer>
     <!-- photo / grid -->
+    <section class="container section scrollspy" id="languages">
+        <div class="row">
+            <div class="col s12 l4">
+                <h2 class="indigo-text text-darken-4">My Languages</h2>
+                <p>I have done the majority of my coding in python and in front end web development, HTML, CSS and Javascript. Some of the projects I have created are under the Projects Tab. I also have sparse experience in C++ and Java and classroom experience in Racket and C. </p>
+                
+                
+            </div>
+            <div class="col s12 l6 offset-l2">
+                <ul class="tabs">
+                    <li class="tab col s6">
+                        <a href="#photography" class="indigo-text text-darken-4">Python</a>
+                    </li>
+                    <li class="tab col s6">
+                        <a href="#editing" class="indigo-text text-darken-4">Front End Web</a>
+                    </li>
+                </ul>
+                <div class="col s12" id='photography'>
+                    <p class="flow-text indigo-text text-darken-4">Python</p>
+                    <p>When I started programming, I started in Python. I have done projects using modules such as Tkinter, Beautiful Soup 4, requests, json, etc. I have done all my contest coding in Python, meaning I have a strong hold on the data structures in python, and how to create more advanced data structures and algorithms such as Breadth First Searches and Sparse Tables. </p>
+                </div>
+                <div class="col s12" id='editing'>
+                    <p class="flow-text indigo-text text-darken-4">Front End Web</p>
+                    <p>I have created many different websites with HTML, CSS and JavaScript, some of which can be seen in the Projects Tab. I have created my own CSS as well as implement frameworks such as Materialize and Bootstrap. I have used Javascript frameworks such as React.js, Graph.js, and Jquery. I am also comfortable with Firebase, the online Database that can be accessed through Javascript. I am proficient in its Authentication functions, Realtime Database, Cloud Firestore, Storage, and Cloud Functions. </p>
+                    
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- parallax -->
+    <div class="parallax-container">
+        <div class="parallax">
+            <img src="ninjaimg/stars.jpg" alt="" class='responsive-img'>
+        </div>
+    </div>
+
+    <!-- parallax -->
+    <!-- <div class="parallax-container">
+        <div class="parallax">
+            <img src="ninjaimg/street.jpg" alt="" class='responsive-img'>
+        </div>
+    </div> -->
+
+    <!-- services / tabs -->
+
+    
+
     <section class="container section scrollspy" id="education">
         <h1 class="center-align">Education</h1>
         <div class="row">
@@ -140,54 +220,9 @@
             </div>
         </div> -->
     </section>
-    <!-- parallax -->
-    <div class="parallax-container">
-        <div class="parallax">
-            <img src="ninjaimg/stars.jpg" alt="" class='responsive-img'>
-        </div>
-    </div>
-
-    <!-- parallax -->
-    <!-- <div class="parallax-container">
-        <div class="parallax">
-            <img src="ninjaimg/street.jpg" alt="" class='responsive-img'>
-        </div>
-    </div> -->
-
-    <!-- services / tabs -->
-
-    <section class="container section scrollspy" id="languages">
-        <div class="row">
-            <div class="col s12 l4">
-                <h2 class="indigo-text text-darken-4">My Languages</h2>
-                <p>I have done the majority of my coding in python and in front end web development, HTML, CSS and Javascript. Some of the projects I have created are under the Projects Tab. I also have sparse experience in C++ and Java and classroom experience in Racket and C. </p>
-                
-                
-            </div>
-            <div class="col s12 l6 offset-l2">
-                <ul class="tabs">
-                    <li class="tab col s6">
-                        <a href="#photography" class="indigo-text text-darken-4">Python</a>
-                    </li>
-                    <li class="tab col s6">
-                        <a href="#editing" class="indigo-text text-darken-4">Front End Web</a>
-                    </li>
-                </ul>
-                <div class="col s12" id='photography'>
-                    <p class="flow-text indigo-text text-darken-4">Python</p>
-                    <p>When I started programming, I started in Python. I have done projects using modules such as Tkinter, Beautiful Soup 4, requests, json, etc. I have done all my contest coding in Python, meaning I have a strong hold on the data structures in python, and how to create more advanced data structures and algorithms such as Breadth First Searches and Sparse Tables. </p>
-                </div>
-                <div class="col s12" id='editing'>
-                    <p class="flow-text indigo-text text-darken-4">Front End Web</p>
-                    <p>I have created many different websites with HTML, CSS and JavaScript, some of which can be seen in the Projects Tab. I have created my own CSS as well as implement frameworks such as Materialize and Bootstrap. I have used Javascript frameworks such as Graph.js, and Jquery. I am also comfortable with Firebase, the online Database that can be accessed through Javascript. I am proficient in its Authentication functions, Realtime Database, Cloud Firestore, Storage, and Cloud Functions. </p>
-                    
-                </div>
-            </div>
-        </div>
-    </section>
 
     <!-- footer -->
-    <footer class="page-footer grey darken-3">
+    <!-- <footer class="page-footer grey darken-3">
         <div class="container">
             <div class="row">
                 <div class="col s12 l6">
@@ -199,7 +234,7 @@
                 <div class="col s12 l4 offset-l2">
                     <img src="images/AboutPhoto.jpg" id="personalPhoto" alt="" srcset="">
                 </div>
-                <!-- <div class="col s12 l4 offset-l2">
+                 <div class="col s12 l4 offset-l2">
                     <h5>Connect</h5>
                     <ul>
                         <li><a href="#" class="grey-text text-lighten-3">Instagram</a></li>
@@ -207,10 +242,10 @@
                         <li><a href="#" class="grey-text text-lighten-3">Discord</a></li>
                         <li><a href="#" class="grey-text text-lighten-3">Linked In</a></li>
                     </ul>
-                </div> -->
+                </div>
             </div>
-        </div>
-
+        </div> -->
+    <footer class="page-footer grey darken-3">
         <div class="footer-copyright grey darken-4">
             <div class="container center-align">&copy; 2023 Oliver Tattersall</div>
         </div>
