@@ -248,12 +248,15 @@ function getSudoku(diff){
                 'X-RapidAPI-Host': 'mega-sudoku-generator.p.rapidapi.com'
             }
         };
-        
-        fetch('https://mega-sudoku-generator.p.rapidapi.com/standard', options)
+        // diff = diff.toLowerCase()
+        console.log(diff)
+        // fetch('https://mega-sudoku-generator.p.rapidapi.com/standard', options)
+        // fetch('http://127.0.0.1:8000/puzzle/?difficulty='+diff)
+        fetch('https://sudoku-api-django.vercel.app/puzzle/?difficulty='+diff)
             .then(response => response.json())
             .then(response => {
                 console.log(response)
-                let temp = response['sudoku'+diff].split(";")
+                let temp = response[diff].split(",")
                 let final=[]
                 for(i=0;i<9;i++){
                     let temprow=[]
