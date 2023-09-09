@@ -47,11 +47,15 @@
         .card:hover {
                 box-shadow: 5px 8px 16px 5px rgba(0,0,0,0.2);
         }
+        .card_image{
+            max-width: 100%;
+        }
         .card_image_horizontal {
             width: 100%;
             /* height: 100%; */
         }.card_image_vertical{
             width:47%;
+
         }
         .card_image:hover{
             box-shadow: 5px 8px 16px 5px rgba(0,0,0,0.2);
@@ -197,6 +201,16 @@
                 <a href="#!" class="modal-close waves-effect waves-green btn-flat">Close</a>
             </div>
         </div>
+        <div id="AlcoholScraper_modal" class="modal">
+            <div class="modal-content" style = "padding-bottom: 12px;">
+                <img src="images/AlcoholScraper.jpg" class = "card_image_horizontal" alt="failed image load">
+                <a  class="btn" onclick="window.open('https://olivertattersall.github.io/projects.html#projects')">Link to project</a>
+                
+            </div>
+            <div class="modal-footer">
+                <a href="#!" class="modal-close waves-effect waves-green btn-flat">Close</a>
+            </div>
+        </div>
     </div>
 
     <script src="https://www.gstatic.com/firebasejs/8.1.1/firebase-app.js"></script>
@@ -324,7 +338,7 @@
             $('#cardsright').html(finalr);
             $("#projects").html(links);
             // $(".modals").html(modal_sec);
-            val = $('#TicTacToe');
+            // val = $('#TicTacToe');
             // val[0].children[0].children[5].height = 619
             // val[0].children[0].children[5].width = 315
             
