@@ -295,11 +295,14 @@
                 let projlink = `<a href="#projects" class="btn" onclick="window.open('${data[keys[i]].link}')">Link to project</a>`
                 let gitlink = `<a href="#projects" class="btn" onclick="window.open('${data[keys[i]].linkg}')">Link to Github</a>`
                 let modallink = projlink;
-                if(data[keys[i]].link == null){
+                if(data[keys[i]].link == null && data[keys[i]].linkg == null){
                     projlink = ""
-                    modallink = gitlink;
-                }else if(data[keys[i]].linkg==null){
                     gitlink = ""
+                    modallink = gitlink;
+                }else if(data[keys[i]].linkg == null){
+                    gitlink = ""
+                }else if(data[keys[i]].link == null){
+                    projlink = ""
                 }else{
                     projlink+="<br>"
                 }
