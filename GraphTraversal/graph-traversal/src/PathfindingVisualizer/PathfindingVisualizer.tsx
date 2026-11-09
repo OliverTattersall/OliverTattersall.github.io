@@ -1,12 +1,13 @@
 import { useCallback, useReducer } from 'react';
 import { dijkstra } from '../algorithms/dijkstra';
-import { createInitialBoard, toggleWall, type Board } from '../grid/createGrid';
+import { createInitialBoard, paintCell, type Board, type PaintTerrain } from '../grid/createGrid';
 import { usePathAnimation } from '../hooks/usePathAnimation';
 import Grid from './Grid/Grid';
 import './PathfindingVisualizer.css';
 
 type BoardAction =
-  | { type: 'pointer-down' | 'pointer-enter'; row: number; col: number }
+  | { type: 'pointer-down'; row: number; col: number; paint: PaintTerrain }
+  | { type: 'pointer-enter'; row: number; col: number }
   | { type: 'pointer-up' | 'reset' };
 
 function boardReducer(state: Board, action: BoardAction): Board {
@@ -15,16 +16,17 @@ function boardReducer(state: Board, action: BoardAction): Board {
       return {
         ...state,
         mouseIsPressed: true,
-        grid: toggleWall(state.grid, action.row, action.col),
+        paint: action.paint,
+        grid: paintCell(state.grid, action.row, action.col, action.paint),
       };
     case 'pointer-enter':
-      if (!state.mouseIsPressed) return state;
+      if (!state.mouseIsPressed || !state.paint) return state;
       return {
         ...state,
-        grid: toggleWall(state.grid, action.row, action.col),
+        grid: paintCell(state.grid, action.row, action.col, state.paint),
       };
     case 'pointer-up':
-      return { ...state, mouseIsPressed: false };
+      return { ...state, mouseIsPressed: false, paint: null };
     case 'reset':
       return createInitialBoard();
     default:
@@ -36,9 +38,9 @@ export default function PathfindingVisualizer() {
   const [board, dispatch] = useReducer(boardReducer, undefined, createInitialBoard);
   const { visited, path, isRunning, isRunningRef, play, resetAnimation } = usePathAnimation();
 
-  const onMouseDown = useCallback((row: number, col: number) => {
+  const onMouseDown = useCallback((row: number, col: number, paint: PaintTerrain) => {
     if (isRunningRef.current) return;
-    dispatch({ type: 'pointer-down', row, col });
+    dispatch({ type: 'pointer-down', row, col, paint });
   }, [isRunningRef]);
 
   const onMouseEnter = useCallback((row: number, col: number) => {
@@ -63,7 +65,7 @@ export default function PathfindingVisualizer() {
   return (
     <>
       <h1>Welcome to my React App, a graph traversal visualizer</h1>
-      <h4>Click and drag on the grid to create Walls</h4>
+      <h4>Left-click and drag for walls. Right-click and drag for mud.</h4>
       <button className="button" onClick={visualize} disabled={isRunning}>
         Visualize Dijkstra's Algorithm
       </button>

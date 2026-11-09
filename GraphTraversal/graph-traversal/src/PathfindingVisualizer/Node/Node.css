@@ -49,6 +49,10 @@
   .node-wall {
     background-color: rgb(12, 53, 71);
   }
+
+  .node-mud {
+    background-color: rgb(139, 90, 43);
+  }
   
   .node-shortest-path {
     animation-name: shortestPath;

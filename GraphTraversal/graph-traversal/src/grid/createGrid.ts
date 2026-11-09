@@ -7,16 +7,23 @@ export type GridNode = Coordinate & {
   isStart: boolean;
   isFinish: boolean;
   isWall: boolean;
+  isMud: boolean;
 };
 
 export type Grid = GridNode[][];
+
+export type PaintTerrain = 'wall' | 'mud';
 
 export type Board = {
   start: Coordinate;
   finish: Coordinate;
   mouseIsPressed: boolean;
+  paint: PaintTerrain | null;
   grid: Grid;
 };
+
+export const NORMAL_WEIGHT = 1;
+export const MUD_WEIGHT = 5;
 
 export const ROW_COUNT = 20;
 export const COL_COUNT = 50;
@@ -38,6 +45,7 @@ export function createGrid(start: Coordinate, finish: Coordinate): Grid {
         isStart: row === start.row && col === start.col,
         isFinish: row === finish.row && col === finish.col,
         isWall: false,
+        isMud: false,
       });
     }
     grid.push(currentRow);
@@ -52,16 +60,30 @@ export function createInitialBoard(): Board {
     start,
     finish,
     mouseIsPressed: false,
+    paint: null,
     grid: createGrid(start, finish),
   };
 }
 
-export function toggleWall(grid: Grid, row: number, col: number): Grid {
+export function cellWeight(node: GridNode): number {
+  return node.isMud ? MUD_WEIGHT : NORMAL_WEIGHT;
+}
+
+export function paintCell(grid: Grid, row: number, col: number, terrain: PaintTerrain): Grid {
   const node = grid[row][col];
   if (node.isStart || node.isFinish) return grid;
+  const turnOn = terrain === 'wall' ? !node.isWall : !node.isMud;
   const nextRow = grid[row].slice();
-  nextRow[col] = { ...node, isWall: !node.isWall };
+  nextRow[col] = {
+    ...node,
+    isWall: terrain === 'wall' && turnOn,
+    isMud: terrain === 'mud' && turnOn,
+  };
   const nextGrid = grid.slice();
   nextGrid[row] = nextRow;
   return nextGrid;
+}
+
+export function toggleWall(grid: Grid, row: number, col: number): Grid {
+  return paintCell(grid, row, col, 'wall');
 }

@@ -1,4 +1,4 @@
-import type { Coordinate, Grid } from '../grid/createGrid';
+import { cellWeight, type Coordinate, type Grid } from '../grid/createGrid';
 
 export type PathResult = {
   visited: Coordinate[];
@@ -9,6 +9,7 @@ type SearchNode = {
   row: number;
   col: number;
   isWall: boolean;
+  weight: number;
   distance: number;
   isVisited: boolean;
   previousNode: SearchNode | null;
@@ -47,6 +48,7 @@ function buildSearchNodes(grid: Grid): SearchNode[][] {
       row: node.row,
       col: node.col,
       isWall: node.isWall,
+      weight: cellWeight(node),
       distance: Infinity,
       isVisited: false,
       previousNode: null,
@@ -60,8 +62,11 @@ function sortNodesByDistance(unvisitedNodes: SearchNode[]) {
 
 function updateUnvisitedNeighbors(node: SearchNode, nodes: SearchNode[][]) {
   for (const neighbor of getUnvisitedNeighbors(node, nodes)) {
-    neighbor.distance = node.distance + 1;
-    neighbor.previousNode = node;
+    const nextDistance = node.distance + neighbor.weight;
+    if (nextDistance < neighbor.distance) {
+      neighbor.distance = nextDistance;
+      neighbor.previousNode = node;
+    }
   }
 }
 

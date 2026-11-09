@@ -1,5 +1,5 @@
 import { dijkstra } from './dijkstra';
-import { createGrid, toggleWall, type Coordinate } from '../grid/createGrid';
+import { createGrid, paintCell, toggleWall, type Coordinate } from '../grid/createGrid';
 
 const start: Coordinate = { row: 10, col: 15 };
 const finish: Coordinate = { row: 10, col: 35 };
@@ -28,7 +28,32 @@ test('returns visit order and path without mutating the grid', () => {
     isStart: true,
     isFinish: false,
     isWall: false,
+    isMud: false,
   });
+});
+
+test('goes around mud when a clear detour is cheaper', () => {
+  const grid = paintCell(createGrid({ row: 0, col: 0 }, { row: 0, col: 2 }), 0, 1, 'mud');
+  const result = dijkstra(grid, { row: 0, col: 0 }, { row: 0, col: 2 });
+
+  expect(result.path).not.toContainEqual({ row: 0, col: 1 });
+  expect(grid[0][1].isMud).toBe(true);
+  expect(grid[0][1].isWall).toBe(false);
+});
+
+test('crosses mud when the other routes are walls', () => {
+  let grid = createGrid({ row: 0, col: 0 }, { row: 0, col: 2 });
+  grid = paintCell(grid, 0, 1, 'mud');
+  grid = paintCell(grid, 1, 0, 'wall');
+  grid = paintCell(grid, 1, 1, 'wall');
+  grid = paintCell(grid, 1, 2, 'wall');
+  const result = dijkstra(grid, { row: 0, col: 0 }, { row: 0, col: 2 });
+
+  expect(result.path).toEqual([
+    { row: 0, col: 0 },
+    { row: 0, col: 1 },
+    { row: 0, col: 2 },
+  ]);
 });
 
 test('walks around a wall and leaves the walled cell unchanged', () => {

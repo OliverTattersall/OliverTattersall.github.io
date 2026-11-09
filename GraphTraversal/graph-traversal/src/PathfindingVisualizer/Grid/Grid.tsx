@@ -1,11 +1,11 @@
 import { nodeKey, type Grid as GridModel } from '../../grid/createGrid';
-import Node, { type CellMouseHandler } from '../Node/Node';
+import Node, { type CellMouseHandler, type CellPaintHandler } from '../Node/Node';
 
 type GridProps = {
   grid: GridModel;
   visited: Set<string>;
   path: Set<string>;
-  onMouseDown: CellMouseHandler;
+  onMouseDown: CellPaintHandler;
   onMouseEnter: CellMouseHandler;
   onMouseUp: () => void;
 };
@@ -25,6 +25,7 @@ export default function Grid({ grid, visited, path, onMouseDown, onMouseEnter, o
                 isFinish={node.isFinish}
                 isStart={node.isStart}
                 isWall={node.isWall}
+                isMud={node.isMud}
                 isVisited={visited.has(key)}
                 isPath={path.has(key)}
                 onMouseDown={onMouseDown}

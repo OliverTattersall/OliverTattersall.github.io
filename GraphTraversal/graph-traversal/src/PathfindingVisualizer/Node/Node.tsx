@@ -1,7 +1,9 @@
 import { memo } from 'react';
+import type { PaintTerrain } from '../../grid/createGrid';
 import './Node.css';
 
 export type CellMouseHandler = (row: number, col: number) => void;
+export type CellPaintHandler = (row: number, col: number, terrain: PaintTerrain) => void;
 
 type NodeProps = {
   col: number;
@@ -9,9 +11,10 @@ type NodeProps = {
   isFinish: boolean;
   isStart: boolean;
   isWall: boolean;
+  isMud: boolean;
   isVisited: boolean;
   isPath: boolean;
-  onMouseDown: CellMouseHandler;
+  onMouseDown: CellPaintHandler;
   onMouseEnter: CellMouseHandler;
   onMouseUp: () => void;
 };
@@ -21,6 +24,7 @@ function Node({
   isFinish,
   isStart,
   isWall,
+  isMud,
   isVisited,
   isPath,
   onMouseDown,
@@ -33,6 +37,7 @@ function Node({
     isStart ? 'node-start' : '',
     isFinish ? 'node-finish' : '',
     isWall ? 'node-wall' : '',
+    isMud ? 'node-mud' : '',
     isVisited ? 'node-visited' : '',
     isPath ? 'node-shortest-path' : '',
   ]
@@ -42,9 +47,10 @@ function Node({
   return (
     <div
       className={className}
-      onMouseDown={() => onMouseDown(row, col)}
+      onMouseDown={(event) => onMouseDown(row, col, event.button === 2 ? 'mud' : 'wall')}
       onMouseEnter={() => onMouseEnter(row, col)}
       onMouseUp={() => onMouseUp()}
+      onContextMenu={(event) => event.preventDefault()}
     />
   );
 }
