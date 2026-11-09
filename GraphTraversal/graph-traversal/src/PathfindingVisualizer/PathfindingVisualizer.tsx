@@ -1,10 +1,20 @@
-import { useCallback, useReducer } from 'react';
-import { dijkstra } from '../algorithms/dijkstra';
-import { createInitialBoard, paintCell, type Board, type PaintTerrain } from '../grid/createGrid';
+import { useCallback, useReducer, useState } from 'react';
+import { astar } from '../algorithms/astar';
+import { dijkstra, type PathResult } from '../algorithms/dijkstra';
+import { createInitialBoard, paintCell, type Board, type Coordinate, type Grid as GridModel, type PaintTerrain } from '../grid/createGrid';
 import { createRandomMap } from '../grid/randomMap';
 import { usePathAnimation } from '../hooks/usePathAnimation';
 import Grid from './Grid/Grid';
 import './PathfindingVisualizer.css';
+
+const algorithms = {
+  dijkstra,
+  astar,
+} as const;
+
+type AlgorithmId = keyof typeof algorithms;
+
+type Pathfinder = (grid: GridModel, start: Coordinate, finish: Coordinate) => PathResult;
 
 type BoardAction =
   | { type: 'pointer-down'; row: number; col: number; paint: PaintTerrain }
@@ -44,6 +54,7 @@ function boardReducer(state: Board, action: BoardAction): Board {
 
 export default function PathfindingVisualizer() {
   const [board, dispatch] = useReducer(boardReducer, undefined, createInitialBoard);
+  const [algorithm, setAlgorithm] = useState<AlgorithmId>('dijkstra');
   const { visited, path, isRunning, isRunningRef, play, resetAnimation } = usePathAnimation();
 
   const onMouseDown = useCallback((row: number, col: number, paint: PaintTerrain) => {
@@ -62,7 +73,8 @@ export default function PathfindingVisualizer() {
 
   const visualize = () => {
     if (isRunningRef.current) return;
-    play(dijkstra(board.grid, board.start, board.finish));
+    const findPath: Pathfinder = algorithms[algorithm];
+    play(findPath(board.grid, board.start, board.finish));
   };
 
   const reset = () => {
@@ -79,8 +91,23 @@ export default function PathfindingVisualizer() {
     <>
       <h1>A graph traversal visualizer</h1>
       <h4>Left-click and drag for walls. Right-click and drag for mud.</h4>
+      <label className="algorithm-label">
+        Algorithm
+        <select
+          className="algorithm-select"
+          value={algorithm}
+          disabled={isRunning}
+          onChange={(event) => {
+            const next = event.target.value;
+            if (next === 'dijkstra' || next === 'astar') setAlgorithm(next);
+          }}
+        >
+          <option value="dijkstra">Dijkstra</option>
+          <option value="astar">A*</option>
+        </select>
+      </label>
       <button className="button" onClick={visualize} disabled={isRunning}>
-        Visualize Dijkstra's Algorithm
+        Visualize
       </button>
       <br />
       <button className="button" onClick={reset}>
