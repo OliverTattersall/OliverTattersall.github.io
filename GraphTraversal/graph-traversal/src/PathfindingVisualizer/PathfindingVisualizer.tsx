@@ -1,6 +1,7 @@
 import { useCallback, useReducer } from 'react';
 import { dijkstra } from '../algorithms/dijkstra';
 import { createInitialBoard, paintCell, type Board, type PaintTerrain } from '../grid/createGrid';
+import { createRandomMap } from '../grid/randomMap';
 import { usePathAnimation } from '../hooks/usePathAnimation';
 import Grid from './Grid/Grid';
 import './PathfindingVisualizer.css';
@@ -8,7 +9,7 @@ import './PathfindingVisualizer.css';
 type BoardAction =
   | { type: 'pointer-down'; row: number; col: number; paint: PaintTerrain }
   | { type: 'pointer-enter'; row: number; col: number }
-  | { type: 'pointer-up' | 'reset' };
+  | { type: 'pointer-up' | 'reset' | 'randomize' };
 
 function boardReducer(state: Board, action: BoardAction): Board {
   switch (action.type) {
@@ -29,6 +30,13 @@ function boardReducer(state: Board, action: BoardAction): Board {
       return { ...state, mouseIsPressed: false, paint: null };
     case 'reset':
       return createInitialBoard();
+    case 'randomize':
+      return {
+        ...state,
+        mouseIsPressed: false,
+        paint: null,
+        grid: createRandomMap(state.start, state.finish),
+      };
     default:
       return state;
   }
@@ -62,9 +70,14 @@ export default function PathfindingVisualizer() {
     dispatch({ type: 'reset' });
   };
 
+  const randomize = () => {
+    resetAnimation();
+    dispatch({ type: 'randomize' });
+  };
+
   return (
     <>
-      <h1>Welcome to my React App, a graph traversal visualizer</h1>
+      <h1>A graph traversal visualizer</h1>
       <h4>Left-click and drag for walls. Right-click and drag for mud.</h4>
       <button className="button" onClick={visualize} disabled={isRunning}>
         Visualize Dijkstra's Algorithm
@@ -72,6 +85,9 @@ export default function PathfindingVisualizer() {
       <br />
       <button className="button" onClick={reset}>
         Reset Grid
+      </button>
+      <button className="button" onClick={randomize}>
+        Random Map
       </button>
       <Grid
         grid={board.grid}
